@@ -1,20 +1,46 @@
 <div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
+
+# 🏛️ JAD Gates | بوابات جاد
+
+### أبواب أوتوماتيكية ومداخل فاخرة — الرياض، المملكة العربية السعودية
+
 </div>
 
-# Run and deploy your AI Studio app
+---
 
-This contains everything you need to run your app locally.
+## 📋 نبذة عن المشروع
 
-View your app in AI Studio: https://ai.studio/apps/b16a7549-cd25-4b63-9974-a033ca52eec3
+موقع إلكتروني احترافي لشركة **جاد للأبواب الأوتوماتيكية** المتخصصة في تصميم وتركيب وصيانة البوابات والأبواب الأوتوماتيكية في الرياض والمملكة العربية السعودية. يتضمن الموقع عرض ثلاثي الأبعاد (3D) تفاعلي للمنتجات باستخدام Three.js.
 
-## Run Locally
+## ✨ المميزات
 
-**Prerequisites:**  Node.js
+- 🎨 تصميم عصري وفاخر مع تأثيرات بصرية متقدمة
+- 🖥️ عرض تفاعلي ثلاثي الأبعاد (3D) للبوابات والأبواب
+- 📱 تصميم متجاوب يعمل على جميع الأجهزة
+- ⚡ أنيميشن سلس وتأثيرات حركية احترافية
+- 🌙 وضع ليلي / نهاري في العرض الثلاثي الأبعاد
+- 🔧 صفحات متعددة: الرئيسية، الخدمات، المشاريع، من نحن، اتصل بنا، والمزيد
 
+## 🛠️ التقنيات المستخدمة
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **HTML5** — هيكل الصفحات
+- **CSS3** — التنسيق والتأثيرات البصرية
+- **JavaScript (Vanilla)** — المنطق والتفاعل
+- **Three.js** — محرك العرض ثلاثي الأبعاد (WebGL)
+
+## 🚀 التشغيل
+
+افتح ملف `index.html` مباشرة في المتصفح — لا حاجة لأي سيرفر أو تثبيت.
+
+## 📞 التواصل
+
+- 📱 الهاتف: [0553925444](tel:+966553925444)
+- 💬 واتساب: [تواصل معنا](https://wa.me/966553925444)
+
+---
+
+<div align="center">
+
+**© 2024 JAD Gates — جميع الحقوق محفوظة**
+
+</div>
