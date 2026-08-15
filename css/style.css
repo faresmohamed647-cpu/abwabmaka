@@ -491,6 +491,7 @@ select {
 
 .btn-secondary:hover {
   background-color: #e9e1d1;
+  transform: translateY(-2px);
 }
 
 .btn-sm {
@@ -501,6 +502,90 @@ select {
 .btn-lg {
   padding: 14px 24px;
   font-size: 1rem;
+}
+
+/* Power-Up Luxury Buttons & Interactive Shimmer Animations */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-gold,
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.btn::after,
+.btn-primary::after,
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.45) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: all 0.75s ease;
+}
+
+.btn:hover::after,
+.btn-primary:hover::after,
+.btn-gold:hover::after {
+  left: 125%;
+}
+
+.btn-primary,
+.btn-gold {
+  background: linear-gradient(135deg, #d4af37 0%, #b38b4d 100%);
+  color: #0f1318 !important;
+  border: 1px solid #f3cf7a;
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.35);
+}
+
+.btn-primary:hover,
+.btn-gold:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(212, 175, 55, 0.55), 0 0 14px rgba(251, 191, 36, 0.4);
+}
+
+.btn-primary:active,
+.btn-gold:active,
+.btn-secondary:active {
+  transform: scale(0.96);
+}
+
+/* Card 3D Hover Tilt & Micro-Animations */
+.feature-card-item,
+.portfolio-card,
+.service-card,
+.project-item-card,
+.model-choice-btn {
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+}
+
+.feature-card-item:hover,
+.portfolio-card:hover,
+.service-card:hover,
+.project-item-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25), 0 0 15px rgba(212, 175, 55, 0.2) !important;
+  border-color: rgba(212, 175, 55, 0.5) !important;
 }
 
 /* ==========================================================================
@@ -515,11 +600,32 @@ select {
   padding: 16px 0;
 }
 
+.site-header .container {
+  position: relative;
+}
+
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  position: relative;
+}
+
+.header-actions,
+.header-cta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+body.nav-menu-open {
+  overflow: hidden;
+}
+
+.mobile-nav-drawer-head {
+  display: none;
 }
 
 .brand-logo-text {
@@ -1916,29 +2022,527 @@ select {
 .studio-3d-canvas-wrapper {
   position: relative;
   background: radial-gradient(
-    circle at 50% 35%,
-    #ffffff 0%,
-    #f1f5f9 55%,
-    #e2e8f0 100%
+    circle at 50% 40%,
+    #1e293b 0%,
+    #0f172a 70%,
+    #090d16 100%
   );
   border-radius: var(--radius-md);
   border: 1px solid rgba(212, 175, 55, 0.4);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   overflow: hidden;
   height: 540px;
-  cursor: grab;
   touch-action: none;
 }
 
-.studio-3d-canvas-wrapper:active {
+.studio-stage-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.studio-3d-env-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, #1e293b 0%, #0f172a 75%, #080c14 100%);
+  z-index: 1;
+}
+
+.studio-spotlight {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 450px;
+  height: 350px;
+  background: radial-gradient(ellipse at center, rgba(254, 243, 199, 0.22) 0%, rgba(212, 175, 55, 0.08) 40%, rgba(0, 0, 0, 0) 70%);
+  pointer-events: none;
+}
+
+.studio-3d-floor-pedestal {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) rotateX(68deg);
+  width: 700px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.95) 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+}
+
+.floor-grid-lines {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-image: linear-gradient(rgba(212, 175, 55, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(212, 175, 55, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  opacity: 0.6;
+}
+
+.floor-gold-ring {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* 3D Object Viewport with 360 Drag Smooth Transition */
+.studio-3d-object-viewport {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  transition: transform 0.08s ease-out;
+  cursor: grab;
+}
+
+.studio-3d-object-viewport:active {
   cursor: grabbing;
 }
 
-.studio-3d-canvas-wrapper canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  touch-action: none;
+.model-3d-container {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transform-origin: center center;
+}
+
+.model-3d-container.active-model {
+  display: flex;
+}
+
+/* 1. 3D Palace Gate Model */
+.gate-3d-frame {
+  position: relative;
+  width: 380px;
+  height: 350px;
+  display: flex;
+  justify-content: space-between;
+  transform-style: preserve-3d;
+}
+
+.gate-pillar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 28px;
+  background: linear-gradient(90deg, #334155, #1e293b, #0f172a);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  transform-style: preserve-3d;
+}
+
+.pillar-left { left: 0; }
+.pillar-right { right: 0; }
+
+/* 3D Hinges & Motor Housing Units */
+.hinge-3d {
+  position: absolute;
+  width: 10px;
+  height: 22px;
+  background: linear-gradient(90deg, #fef08a, #d4af37, #854d0e);
+  border-radius: 4px;
+  border: 1px solid #78350f;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+}
+
+.pillar-left .hinge-3d { right: -6px; }
+.pillar-right .hinge-3d { left: -6px; }
+
+.hinge-top { top: 40px; }
+.hinge-bottom { bottom: 40px; }
+
+/* Italian 24V Hydraulic Motor Box */
+.motor-housing-unit {
+  position: absolute;
+  top: 55%;
+  width: 38px;
+  height: 55px;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1.5px solid #d4af37;
+  border-radius: 6px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.8), 0 0 10px rgba(212, 175, 55, 0.3);
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 4px;
+  transform-style: preserve-3d;
+}
+
+.motor-left { left: -12px; }
+.motor-right { right: -12px; }
+
+.motor-label {
+  font-size: 0.45rem;
+  font-weight: 900;
+  color: #fbbf24;
+  letter-spacing: 0.3px;
+  text-align: center;
+}
+
+.led-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.led-status-dot.green {
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e, 0 0 14px #16a34a;
+  animation: pulseGreen 1.5s infinite;
+}
+
+/* Dual-Stage Telescopic Chrome Piston Arms */
+.hydraulic-arm {
+  position: absolute;
+  top: 58%;
+  height: 14px;
+  width: 75px;
+  background: linear-gradient(180deg, #64748b 0%, #334155 50%, #1e293b 100%);
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  z-index: 9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.35, 1), width 1.5s cubic-bezier(0.25, 1, 0.35, 1);
+  transform-style: preserve-3d;
+  display: flex;
+  align-items: center;
+}
+
+.hydraulic-arm.arm-left {
+  left: 24px;
+  transform-origin: left center;
+}
+
+.hydraulic-arm.arm-right {
+  right: 24px;
+  transform-origin: right center;
+}
+
+.piston-shaft-inner {
+  height: 6px;
+  flex: 1;
+  background: linear-gradient(90deg, #f8fafc, #cbd5e1, #e2e8f0);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.9), 0 0 6px rgba(255,255,255,0.6);
+  transition: width 1.5s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+.piston-ball-joint {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d4af37;
+  border: 1px solid #78350f;
+}
+
+/* Heavy Volumetric Open Gate 3D Motion */
+.gate-open .wing-3d-left {
+  transform: perspective(1200px) rotateY(-80deg) translateZ(14px);
+  filter: drop-shadow(-20px 25px 35px rgba(0,0,0,0.85));
+}
+
+.gate-open .wing-3d-right {
+  transform: perspective(1200px) rotateY(80deg) translateZ(14px);
+  filter: drop-shadow(20px 25px 35px rgba(0,0,0,0.85));
+}
+
+.gate-open .hydraulic-arm.arm-left {
+  width: 110px;
+  transform: rotateY(-35deg);
+}
+
+.gate-open .hydraulic-arm.arm-right {
+  width: 110px;
+  transform: rotateY(35deg);
+}
+
+/* 2. 3D Modern Pivot Door Model (Volumetric 140mm Slab) */
+.pivot-3d-frame {
+  position: relative;
+  width: 260px;
+  height: 380px;
+  border: 8px solid #1e293b;
+  box-shadow: 0 0 0 2px #d4af37, 0 25px 60px rgba(0,0,0,0.8);
+  background: #090d16;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.pivot-door-leaf {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 2px solid #d4af37;
+  transform-origin: 18% center Z -14px;
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.35, 1);
+  transform-style: preserve-3d;
+  box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+}
+
+.door-edge-thickness {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -24px;
+  width: 24px;
+  background: linear-gradient(90deg, #1e293b 0%, #475569 50%, #0f172a 100%);
+  border: 1px solid #d4af37;
+  transform: rotateY(90deg);
+  transform-origin: left center;
+}
+
+.door-top-thickness {
+  position: absolute;
+  top: -24px;
+  left: 0;
+  right: 0;
+  height: 24px;
+  background: linear-gradient(180deg, #475569 0%, #1e293b 100%);
+  border: 1px solid #d4af37;
+  transform: rotateX(90deg);
+  transform-origin: bottom center;
+}
+
+.gate-open .pivot-door-leaf {
+  transform: rotateY(88deg) translateZ(16px);
+  filter: drop-shadow(25px 35px 45px rgba(0,0,0,0.9));
+}
+
+.pivot-panel-surface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(12px);
+}
+
+.panel-titanium-texture {
+  position: absolute;
+  inset: 15px;
+  border: 1px stroke rgba(212, 175, 55, 0.4);
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 10px, transparent 10px, transparent 20px);
+}
+
+.led-light-strip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25px;
+  width: 5px;
+  background: #38bdf8;
+  box-shadow: 0 0 15px #38bdf8, 0 0 30px #0284c7;
+}
+
+.brass-long-handle {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  right: 25px;
+  width: 12px;
+  background: linear-gradient(90deg, #fef08a, #d4af37, #854d0e);
+  border-radius: 4px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+  transform: translateZ(8px);
+}
+
+/* 3. 3D Smart Garage Shutter Model */
+.shutter-3d-frame {
+  position: relative;
+  width: 340px;
+  height: 350px;
+  background: #090d16;
+  border: 4px solid #1e293b;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.shutter-hood-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background: linear-gradient(180deg, #475569 0%, #1e293b 50%, #0f172a 100%);
+  border-bottom: 2px solid #d4af37;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+
+.shutter-revolving-reel {
+  position: absolute;
+  inset: 5px;
+  border-radius: 20px;
+  background: repeating-linear-gradient(90deg, #334155, #334155 8px, #1e293b 8px, #1e293b 16px);
+  opacity: 0.3;
+}
+
+.shutter-logo-badge {
+  position: relative;
+  z-index: 2;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: 1px;
+}
+
+.shutter-guide-left,
+.shutter-guide-right {
+  position: absolute;
+  top: 48px;
+  bottom: 0;
+  width: 18px;
+  background: linear-gradient(90deg, #1e293b, #334155, #0f172a);
+  border: 1px solid #d4af37;
+  z-index: 9;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.8);
+}
+.shutter-guide-left { left: 0; }
+.shutter-guide-right { right: 0; }
+
+.shutter-slats-curtain {
+  position: absolute;
+  top: 48px;
+  left: 18px;
+  right: 18px;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 1.5s cubic-bezier(0.25, 1, 0.35, 1);
+  z-index: 8;
+}
+
+.slat-row {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(180deg, #475569 0%, #1e293b 70%, #0f172a 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: inset 0 2px 3px rgba(255,255,255,0.15), inset 0 -2px 3px rgba(0,0,0,0.5);
+}
+
+.slat-metallic-groove {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  height: 1px;
+  background: rgba(212, 175, 55, 0.25);
+}
+
+.slat-bottom-bar {
+  height: 22px;
+  background: linear-gradient(90deg, #d4af37, #fef08a, #d4af37);
+  border-top: 1px solid #854d0e;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.gate-open .shutter-slats-curtain {
+  transform: translateY(-92%) scaleY(0.95);
+}
+
+.pulse-green-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulseGreen 1.8s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* CAD Blueprint Grid Overlay */
+.blueprint-cad-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.05) 0%, rgba(15, 23, 42, 0.7) 100%);
+}
+
+.blueprint-cad-grid.active {
+  opacity: 1;
+}
+
+.cad-line {
+  position: absolute;
+  background: rgba(56, 189, 248, 0.6);
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+}
+
+.cad-line.horizontal-top { top: 15%; left: 10%; right: 10%; height: 1px; }
+.cad-line.horizontal-bottom { bottom: 15%; left: 10%; right: 10%; height: 1px; }
+.cad-line.vertical-left { left: 15%; top: 10%; bottom: 10%; width: 1px; }
+.cad-line.vertical-right { right: 15%; top: 10%; bottom: 10%; width: 1px; }
+
+.cad-dimension-label {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.9);
+  color: #38bdf8;
+  font-family: monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border: 1px solid #0284c7;
+  border-radius: 4px;
+}
+
+.cad-dimension-label.width-label {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cad-dimension-label.height-label {
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+/* Lighting Mode Overlay */
+.lighting-mode-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  transition: background 0.5s ease;
+  background: transparent;
+}
+
+.lighting-mode-overlay.night {
+  background: radial-gradient(circle at 50% 30%, rgba(251, 191, 36, 0.18) 0%, rgba(15, 23, 42, 0.82) 75%);
 }
 
 /* Floating overlay inside 3D viewer */
@@ -2035,7 +2639,7 @@ select {
   min-height: 40px;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: var(--transition);
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   white-space: nowrap;
   user-select: none;
 }
@@ -2043,8 +2647,13 @@ select {
 .tool-3d-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border-color: rgba(212, 175, 55, 0.6);
-  transform: translateY(-1px);
+  border-color: rgba(212, 175, 55, 0.8);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.tool-3d-btn:active {
+  transform: scale(0.95);
 }
 
 .tool-3d-btn.active {
@@ -2052,7 +2661,14 @@ select {
   border-color: #f3cf7a;
   color: #0f1318;
   font-weight: 800;
-  box-shadow: 0 2px 14px rgba(212, 175, 55, 0.5);
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.6), 0 0 10px rgba(251, 191, 36, 0.4);
+  animation: neonPulse 2.5s infinite;
+}
+
+@keyframes neonPulse {
+  0% { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.6), 0 0 10px rgba(251, 191, 36, 0.4); }
+  50% { box-shadow: 0 6px 28px rgba(212, 175, 55, 0.85), 0 0 18px rgba(251, 191, 36, 0.7); }
+  100% { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.6), 0 0 10px rgba(251, 191, 36, 0.4); }
 }
 
 .tool-3d-btn.active svg {
@@ -3154,6 +3770,44 @@ select {
     padding: 32px 24px;
     margin-top: 40px;
   }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 16px;
+    border: 1px solid rgba(230, 223, 213, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+    z-index: 999;
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
+  }
+
+  .nav-menu.open {
+    display: flex;
+    animation: navMobileSlide 0.2s ease;
+  }
+
+  .mobile-menu-toggle,
+  .menu-toggle-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    min-height: 42px;
+    border: 1px solid rgba(52, 71, 62, 0.12);
+    background: #ffffff;
+    cursor: pointer;
+    z-index: 1000;
+  }
 }
 
 /* Mobile & Small Tablet (Max 768px) */
@@ -3161,6 +3815,10 @@ select {
   .container {
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  .top-bar {
+    display: none;
   }
 
   .site-header {
@@ -3171,33 +3829,46 @@ select {
     gap: 10px;
   }
 
-  .brand-logo-text {
+  .brand-logo-text,
+  .brand-title {
     font-size: 0.98rem;
     white-space: normal;
-    max-width: 180px;
+    max-width: 190px;
     line-height: 1.3;
   }
 
-  .nav-menu {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 16px;
-    right: 16px;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(12px);
-    flex-direction: column;
-    align-items: stretch;
-    padding: 18px 16px;
-    border: 1px solid rgba(230, 223, 213, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
-    z-index: 120;
+  .brand-tagline {
+    font-size: 0.72rem;
   }
 
-  .nav-menu.open {
-    display: flex;
-    animation: navMobileSlide 0.2s ease;
+  .logo-icon-wrap {
+    width: 36px;
+    height: 36px;
+  }
+
+  .btn-header-quote,
+  .header-cta-wrap .btn-primary.btn-sm {
+    display: none;
+  }
+
+  .mobile-nav-drawer-head {
+    display: block;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(230, 223, 213, 0.9);
+  }
+
+  .mobile-nav-brand {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--color-text-main);
+    margin-bottom: 4px;
+  }
+
+  .mobile-nav-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-accent-gold);
   }
 
   @keyframes navMobileSlide {
@@ -3221,11 +3892,8 @@ select {
     background: rgba(179, 139, 77, 0.09);
   }
 
-  .mobile-menu-toggle,
-  .menu-toggle-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+  .nav-link.active::after {
+    display: none;
   }
 
   .home-hero-title {
@@ -3804,4 +4472,147 @@ select {
 
 .footer-social-chip:hover {
   transform: translateY(-5px) scale(1.2) !important;
+}
+
+/* ==========================================================================
+   Luxury Interactive Speed-Dial Contact Floating Widget
+   ========================================================================== */
+.vip-speed-dial-widget {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9999;
+  direction: rtl;
+}
+
+.vip-speed-dial-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  padding: 10px 20px;
+  border-radius: 40px;
+  color: #ffffff;
+  font-family: var(--font-arabic);
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.25);
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.vip-speed-dial-trigger:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.4);
+  border-color: #fbbf24;
+}
+
+.trigger-icon-default,
+.trigger-icon-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fbbf24;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.trigger-icon-close {
+  display: none;
+}
+
+.vip-speed-dial-widget.open .trigger-icon-default {
+  display: none;
+}
+
+.vip-speed-dial-widget.open .trigger-icon-close {
+  display: flex;
+  transform: rotate(90deg);
+}
+
+.trigger-label {
+  letter-spacing: 0.3px;
+}
+
+/* Speed Dial Expanded Menu */
+.vip-speed-dial-menu {
+  position: absolute;
+  bottom: 64px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(0.9);
+  transition: opacity 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-width: 210px;
+}
+
+.vip-speed-dial-widget.open .vip-speed-dial-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.vip-dial-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  padding: 10px 16px;
+  border-radius: 30px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 700;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+  transition: all 0.25s ease;
+}
+
+.vip-dial-item:hover {
+  transform: translateX(-6px) scale(1.03);
+  border-color: #d4af37;
+  color: #ffffff;
+}
+
+.dial-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.vip-dial-item:hover .dial-icon {
+  transform: scale(1.15) rotate(8deg);
+}
+
+/* Individual Channel Accent Colors */
+.dial-phone .dial-icon { background: #22c55e; color: #ffffff; }
+.dial-phone:hover { border-color: #22c55e; box-shadow: 0 8px 25px rgba(34, 197, 94, 0.35); }
+
+.dial-wa .dial-icon { background: #25D366; color: #ffffff; }
+.dial-wa:hover { border-color: #25D366; box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35); }
+
+.dial-snap .dial-icon { background: #FFFC00; color: #000000; }
+.dial-snap:hover { border-color: #FFFC00; box-shadow: 0 8px 25px rgba(255, 252, 0, 0.35); }
+
+.dial-tiktok .dial-icon { background: #000000; color: #ffffff; border: 1px solid #25f4ee; }
+.dial-tiktok:hover { border-color: #25f4ee; box-shadow: 0 8px 25px rgba(37, 244, 238, 0.35); }
+
+.dial-fb .dial-icon { background: #1877F2; color: #ffffff; }
+.dial-fb:hover { border-color: #1877F2; box-shadow: 0 8px 25px rgba(24, 119, 242, 0.35); }
+
+@media (max-width: 768px) {
+  .vip-speed-dial-widget {
+    bottom: 18px;
+    left: 16px;
+  }
 }

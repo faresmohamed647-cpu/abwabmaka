@@ -4,7 +4,7 @@
  * For Al-Itqan Metal Industries
  */
 
-import * as THREE from 'three';
+const THREE = typeof window !== 'undefined' && window.THREE ? window.THREE : null;
 
 // Project Models and Catalog
 const PROJECT_CATALOG = {
@@ -66,7 +66,7 @@ let activeModal3DVisualizer = null;
 /**
  * 3D Interactive Card Tilt Effect
  */
-export function init3DImageEffects() {
+function init3DImageEffects() {
   const cards = document.querySelectorAll(
     '.project-item-card'
   );
@@ -164,6 +164,7 @@ class ModalProject3DVisualizer {
   }
 
   init() {
+    if (!THREE) return;
     this.container.innerHTML = '';
     const rect = this.container.getBoundingClientRect();
     const width = rect.width || 640;
@@ -696,7 +697,7 @@ class ModalProject3DVisualizer {
 /**
  * 3D Lightbox & Project Inspector Modal
  */
-export function init3DImageModal() {
+function init3DImageModal() {
   let modal = document.getElementById('image3DModal');
   if (!modal) {
     modal = document.createElement('div');
@@ -857,8 +858,9 @@ function bindClickableCards() {
   projectCards.forEach(card => {
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
-      // If clicking directly on a link like quote.html link, don't hijack unless desired
-      if (e.target.tagName === 'A' && !e.target.classList.contains('open-modal-trigger')) {
+      // If clicking inside a standard link (like quote link or whatsapp), let default link navigation work
+      const closestLink = e.target.closest('a');
+      if (closestLink && !closestLink.classList.contains('open-modal-trigger') && !closestLink.classList.contains('btn-project-3d')) {
         return;
       }
       e.preventDefault();
@@ -899,7 +901,7 @@ function bindClickableCards() {
   });
 }
 
-export function openProject3DModal(projectData) {
+function openProject3DModal(projectData) {
   currentProjectData = projectData;
 
   const modal = document.getElementById('image3DModal');
@@ -937,7 +939,7 @@ export function openProject3DModal(projectData) {
 /**
  * Toast Notification Helper
  */
-export function showGlobalToast(msg) {
+function showGlobalToast(msg) {
   let toast = document.getElementById('siteToast');
   if (!toast) {
     toast = document.createElement('div');
@@ -955,7 +957,7 @@ export function showGlobalToast(msg) {
 /**
  * Animated Stat Counters
  */
-export function initAnimatedCounters() {
+function initAnimatedCounters() {
   const statNumbers = document.querySelectorAll('.stat-card-number');
   if (statNumbers.length === 0) return;
 
@@ -999,4 +1001,12 @@ export function initAnimatedCounters() {
   );
 
   statNumbers.forEach((num) => observer.observe(num));
+}
+
+if (typeof window !== 'undefined') {
+  window.init3DImageEffects = init3DImageEffects;
+  window.init3DImageModal = init3DImageModal;
+  window.openProject3DModal = openProject3DModal;
+  window.showGlobalToast = showGlobalToast;
+  window.initAnimatedCounters = initAnimatedCounters;
 }

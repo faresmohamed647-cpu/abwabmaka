@@ -8,6 +8,14 @@
   <!-- Animate.css Library for Smooth Hero & Element Entrances -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -29,9 +37,9 @@
           <a href="contact.html" class="nav-link" id="navContact">تواصل معنا</a>
         </nav>
 
-        <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="header-actions">
           <a href="quote.html" class="btn-header-quote" id="headerQuoteBtn">اطلب عرض سعر</a>
-          <button class="mobile-menu-toggle" id="menuToggle" aria-label="القائمة">
+          <button class="mobile-menu-toggle" id="menuToggle" aria-label="فتح قائمة أقسام الموقع" aria-expanded="false">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -213,84 +221,261 @@
     </div>
   </section>
 
-  <!-- 3D Interactive Studio Visualizer Section (استوديو العرض التفاعلي ثلاثي الأبعاد) -->
+  <!-- 3D Interactive Studio Configurator Section (استوديو التخصيص والمعاينة التفاعلي) -->
   <section class="studio-3d-section" id="studio3DSection">
     <div class="container">
-      <div style="text-align: center; max-width: 720px; margin: 0 auto 20px;">
+      <div style="text-align: center; max-width: 760px; margin: 0 auto 24px;">
         <span class="studio-3d-tag" style="margin-bottom: 12px; display: inline-flex;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          3D INTERACTIVE STUDIO
+          ARCHITECTURAL STUDIO CONFIGURATOR
         </span>
         <h2 style="font-size: 2.2rem; font-weight: 900; color: #ffffff; margin-bottom: 10px;">
-          استوديو المعاينة التفاعلي ثلاثي الأبعاد
+          استوديو المعاينة والتخصيص التفاعلي ثلاثي الأبعاد
         </h2>
         <p style="font-size: 0.95rem; color: #94a3b8; line-height: 1.7;">
-          تحكم في حركة البوابات، زوايا الكاميرا، نمط الإضاءة، ونوع الطلاء الكهرستاتيكي مباشرة عبر أدوات الاستوديو ثلاثية الأبعاد أدناه.
+          خصص تصميم بوابة منزلك أو كراجك، حدد المقاسات والألوان ونمط الإضاءة، وشاهد محاكاة الحركة واطلب عرض السعر فوراً.
         </p>
       </div>
 
       <div class="studio-3d-layout">
-        <!-- Main 3D Canvas Stage -->
+        <!-- Main Interactive Stage Viewport -->
         <div class="studio-3d-canvas-wrapper" id="gate3DCanvasContainer">
-          <!-- Top Info Badge -->
+          
+          <!-- Live Interactive Studio 3D Model Stage -->
+          <div class="studio-stage-viewport" id="studioStageViewport">
+            
+            <!-- 3D Studio Lighting & Environment Background -->
+            <div class="studio-3d-env-bg">
+              <div class="studio-spotlight"></div>
+            </div>
+
+            <!-- 3D Architectural Stage Floor Pedestal -->
+            <div class="studio-3d-floor-pedestal">
+              <div class="floor-grid-lines"></div>
+              <div class="floor-gold-ring"></div>
+            </div>
+
+            <!-- 3D Interactive Object Model Viewport -->
+            <div class="studio-3d-object-viewport" id="studio3DObjectViewport">
+              
+              <!-- Model 1: 3D Palace Gate (بوابة القصور الفاخرة - مجسم ثلاثي الأبعاد مع ميكانيزم محركات هيدروليكية ظاهر) -->
+              <div class="model-3d-container active-model" id="stagePalaceGate">
+                <div class="gate-3d-frame">
+                  
+                  <!-- Left Concrete/Steel Pillar with Motor Housing & 3D Hinges -->
+                  <div class="gate-pillar pillar-left">
+                    <div class="pillar-3d-side"></div>
+                    <div class="hinge-3d hinge-top"></div>
+                    <div class="hinge-3d hinge-bottom"></div>
+                    
+                    <!-- Italian Hydraulic Motor Housing -->
+                    <div class="motor-housing-unit motor-left">
+                      <div class="motor-label">24V HYDRAULIC</div>
+                      <div class="led-status-dot green"></div>
+                    </div>
+                  </div>
+
+                  <!-- Right Concrete/Steel Pillar with Motor Housing & 3D Hinges -->
+                  <div class="gate-pillar pillar-right">
+                    <div class="pillar-3d-side"></div>
+                    <div class="hinge-3d hinge-top"></div>
+                    <div class="hinge-3d hinge-bottom"></div>
+                    
+                    <!-- Italian Hydraulic Motor Housing -->
+                    <div class="motor-housing-unit motor-right">
+                      <div class="motor-label">24V HYDRAULIC</div>
+                      <div class="led-status-dot green"></div>
+                    </div>
+                  </div>
+
+                  <div class="gate-header-arch">
+                    <div class="arch-gold-emblem"></div>
+                  </div>
+                  
+                  <!-- Visible Dual-Stage Telescopic Hydraulic Piston Arms -->
+                  <div class="hydraulic-arm arm-left">
+                    <div class="piston-cylinder-outer"></div>
+                    <div class="piston-shaft-inner" id="pistonShaftLeft"></div>
+                    <div class="piston-ball-joint"></div>
+                  </div>
+                  <div class="hydraulic-arm arm-right">
+                    <div class="piston-cylinder-outer"></div>
+                    <div class="piston-shaft-inner" id="pistonShaftRight"></div>
+                    <div class="piston-ball-joint"></div>
+                  </div>
+
+                  <!-- 3D Gate Wing Left with Volumetric Depth & Mechanical Brackets -->
+                  <div class="gate-wing wing-3d-left" id="wingPalaceLeft">
+                    <!-- Front Metal Face -->
+                    <div class="wing-front-face">
+                      <svg viewBox="0 0 200 400" class="gate-svg-details">
+                        <!-- Outer frame -->
+                        <rect x="5" y="5" width="190" height="390" rx="4" fill="#17191c" stroke="#d4af37" stroke-width="4"/>
+                        <!-- Spear tips top -->
+                        <path d="M20,5 L20,-15 L25,-5 L30,-15 L30,5 M60,5 L60,-15 L65,-5 L70,-15 L70,5 M100,5 L100,-15 L105,-5 L110,-15 L110,5 M140,5 L140,-15 L145,-5 L150,-15 L150,5 M180,5 L180,-15 L185,-5 L190,-15 L190,5" fill="#d4af37"/>
+                        <!-- Vertical iron bars -->
+                        <line x1="30" y1="20" x2="30" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="60" y1="20" x2="60" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="90" y1="20" x2="90" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="120" y1="20" x2="120" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="150" y1="20" x2="150" y2="380" stroke="#333842" stroke-width="4"/>
+                        <!-- Intricate CNC Gold Lattice Centre -->
+                        <rect x="25" y="80" width="150" height="240" fill="none" stroke="#d4af37" stroke-width="3" rx="8"/>
+                        <path d="M25,80 L175,320 M175,80 L25,320 M100,80 L100,320 M25,200 L175,200" stroke="#d4af37" stroke-width="2.5"/>
+                        <circle cx="100" cy="200" r="35" fill="none" stroke="#d4af37" stroke-width="4"/>
+                        <polygon points="100,170 125,200 100,230 75,200" fill="#d4af37" opacity="0.85"/>
+                        <!-- Gold Handle -->
+                        <rect x="175" y="190" width="12" height="40" rx="3" fill="#d4af37"/>
+                      </svg>
+                    </div>
+                    <!-- 3D Solid Edge Thickness (80mm Steel Depth) -->
+                    <div class="wing-side-thickness edge-right"></div>
+                    <div class="wing-top-thickness"></div>
+                  </div>
+
+                  <!-- 3D Gate Wing Right with Volumetric Depth & Mechanical Brackets -->
+                  <div class="gate-wing wing-3d-right" id="wingPalaceRight">
+                    <!-- Front Metal Face -->
+                    <div class="wing-front-face">
+                      <svg viewBox="0 0 200 400" class="gate-svg-details">
+                        <!-- Outer frame -->
+                        <rect x="5" y="5" width="190" height="390" rx="4" fill="#17191c" stroke="#d4af37" stroke-width="4"/>
+                        <!-- Spear tips top -->
+                        <path d="M20,5 L20,-15 L25,-5 L30,-15 L30,5 M60,5 L60,-15 L65,-5 L70,-15 L70,5 M100,5 L100,-15 L105,-5 L110,-15 L110,5 M140,5 L140,-15 L145,-5 L150,-15 L150,5 M180,5 L180,-15 L185,-5 L190,-15 L190,5" fill="#d4af37"/>
+                        <!-- Vertical iron bars -->
+                        <line x1="30" y1="20" x2="30" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="60" y1="20" x2="60" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="90" y1="20" x2="90" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="120" y1="20" x2="120" y2="380" stroke="#333842" stroke-width="4"/>
+                        <line x1="150" y1="20" x2="150" y2="380" stroke="#333842" stroke-width="4"/>
+                        <!-- Intricate CNC Gold Lattice Centre -->
+                        <rect x="25" y="80" width="150" height="240" fill="none" stroke="#d4af37" stroke-width="3" rx="8"/>
+                        <path d="M25,80 L175,320 M175,80 L25,320 M100,80 L100,320 M25,200 L175,200" stroke="#d4af37" stroke-width="2.5"/>
+                        <circle cx="100" cy="200" r="35" fill="none" stroke="#d4af37" stroke-width="4"/>
+                        <polygon points="100,170 125,200 100,230 75,200" fill="#d4af37" opacity="0.85"/>
+                        <!-- Gold Handle -->
+                        <rect x="13" y="190" width="12" height="40" rx="3" fill="#d4af37"/>
+                      </svg>
+                    </div>
+                    <!-- 3D Solid Edge Thickness (80mm Steel Depth) -->
+                    <div class="wing-side-thickness edge-left"></div>
+                    <div class="wing-top-thickness"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Model 2: 3D Modern Villa Pivot Door (باب فيلا محوري معاصر مع ميكانيزم المظروف الهيدروليكي) -->
+              <div class="model-3d-container" id="stagePivotDoor">
+                <div class="pivot-3d-frame">
+                  <div class="pivot-frame-border"></div>
+                  
+                  <!-- Hydraulic Floor & Overhead Spindle Pins -->
+                  <div class="pivot-spindle-pin pin-top"></div>
+                  <div class="pivot-spindle-pin pin-bottom"></div>
+
+                  <div class="pivot-door-leaf" id="leafPivotDoor">
+                    <div class="pivot-panel-surface">
+                      <div class="panel-titanium-texture"></div>
+                      <div class="led-light-strip"></div>
+                      <div class="brass-long-handle"></div>
+                    </div>
+                    <!-- Solid 3D Thickness Side Edge -->
+                    <div class="door-edge-thickness"></div>
+                    <div class="door-top-thickness"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Model 3: 3D Smart Garage Shutter (شتر حماية أوتوماتيكي مع محرك أنبوبي وتروس حركية) -->
+              <div class="model-3d-container" id="stageShutter">
+                <div class="shutter-3d-frame">
+                  <div class="shutter-hood-box">
+                    <span class="shutter-logo-badge">SOMFY TUBULAR DRIVE 433MHz</span>
+                    <div class="shutter-revolving-reel" id="shutterReel">
+                      <div class="gear-teeth-ring"></div>
+                    </div>
+                  </div>
+                  <div class="shutter-guide-left"></div>
+                  <div class="shutter-guide-right"></div>
+                  <div class="shutter-slats-curtain" id="curtainShutter">
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-row"><div class="slat-metallic-groove"></div></div>
+                    <div class="slat-bottom-bar"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- CAD Blueprint Overlay Grid -->
+            <div class="blueprint-cad-grid" id="blueprintCadGrid">
+              <div class="cad-line horizontal-top"></div>
+              <div class="cad-line horizontal-bottom"></div>
+              <div class="cad-line vertical-left"></div>
+              <div class="cad-line vertical-right"></div>
+              <div class="cad-dimension-label width-label" id="cadWidthText">العرض: 4.00 م</div>
+              <div class="cad-dimension-label height-label" id="cadHeightText">الارتفاع: 3.00 م</div>
+            </div>
+
+            <!-- Stage Lighting Mode Overlay -->
+            <div class="lighting-mode-overlay" id="lightingOverlay"></div>
+          </div>
+
+          <!-- Top Overlay Info Pills -->
           <div class="studio-3d-top-overlay">
             <div class="studio-3d-tag">
-              <span style="width: 8px; height: 8px; background: #22c55e; border-radius: 50%; display: inline-block;"></span>
-              رندر حي بالوقت الفعلي WebGL 3D
+              <span class="pulse-green-dot"></span>
+              <span id="studioStageStatusText">معاينة تفاعلية HD حية</span>
             </div>
             <div class="studio-3d-hint">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3"/></svg>
-              <span class="studio-hint-desktop">اسحب للتدوير 360° | حرك العجلة للتكبير</span>
-              <span class="studio-hint-touch">المس للتدوير 360° | باعد بإصبعين للتكبير</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>انقر الأزرار بالأسفل لتجربة الحركة والطلاء والأبعاد</span>
             </div>
           </div>
 
           <!-- Quick Action Floating Toolbar at Bottom -->
           <div class="studio-3d-bottom-tools" id="studio3DBottomTools">
-            <button class="tool-3d-btn" id="btn3DOpenClose" title="تشغيل حركة الفتح والإغلاق">
+            <button class="tool-3d-btn" id="btn3DOpenClose" title="تشغيل محاكاة الفتح والإغلاق">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span class="btn-label">فتح البوابة 3D</span>
+              <span class="btn-label" id="btnOpenCloseText">محاكاة فتح البوابة</span>
             </button>
-            <button class="tool-3d-btn active" id="btn3DAutoRotate" title="دوران تلقائي 360°">
+            <button class="tool-3d-btn active" id="btn3DAutoRotate" title="تفعيل المؤثرات الحركية 360°">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-              <span class="btn-label">دوران 360°</span>
+              <span class="btn-label">تفاعل 360°</span>
             </button>
-            <button class="tool-3d-btn" id="btn3DLighting" title="تبديل الإضاءة (نهارية / ليلية / مخطط هندسي)">
+            <button class="tool-3d-btn" id="btn3DLighting" title="تبديل الإضاءة (نهار / ليل)">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-              <span class="btn-label">إضاءة المشهد</span>
+              <span class="btn-label" id="btnLightingText">إضاءة نهارية</span>
             </button>
-            <button class="tool-3d-btn" id="btn3DWireframe" title="مخطط هندسي سلكي Wireframe">
+            <button class="tool-3d-btn" id="btn3DWireframe" title="إظهار أبعاد المخطط الهندسي CAD">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-              <span>مخطط سلكي</span>
+              <span>مخطط CAD</span>
             </button>
 
             <div class="tool-3d-divider"></div>
 
-            <!-- Camera Specific Controls -->
-            <button class="tool-3d-btn" id="btn3DFrontView" title="توجيه الكاميرا لواجهة أمامية">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18"/></svg>
-              <span>واجهة أمامية</span>
-            </button>
-            <button class="tool-3d-btn" id="btn3DResetCam" title="إعادة ضبط زاوية وبعد الكاميرا">
+            <button class="tool-3d-btn" id="btn3DResetCam" title="إعادة ضبط المعاينة">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
               <span>إعادة ضبط</span>
-            </button>
-            <button class="tool-3d-btn tool-3d-icon-btn" id="btn3DZoomIn" title="تكبير الكاميرا (+)">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-            </button>
-            <button class="tool-3d-btn tool-3d-icon-btn" id="btn3DZoomOut" title="تصغير الكاميرا (-)">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
             </button>
           </div>
         </div>
 
-        <!-- 3D Controls Sidebar -->
+        <!-- Interactive Control Panel & Customizer Sidebar -->
         <aside class="studio-3d-sidebar">
           <!-- 1. Model Selection -->
           <div>
             <div class="sidebar-3d-group-title">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              اختر النموذج ثلاثي الأبعاد
+              اختر نموذج المنتج
             </div>
             <div class="model-selector-grid">
               <button class="model-choice-btn active" data-3d-model="palaceGate" id="modelPalaceGate">
@@ -312,7 +497,7 @@
           <div>
             <div class="sidebar-3d-group-title">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
-              نوع وتشطيب الطلاء الكهرستاتيكي
+              لون الطلاء الكهرستاتيكي
             </div>
             <div class="finishes-swatches-grid">
               <button class="finish-swatch-btn active" data-3d-finish="royalBlack" title="أسود ملكي وذهبي">
@@ -334,7 +519,35 @@
             </div>
           </div>
 
-          <!-- 3. Engineering Specs Card -->
+          <!-- 3. Dimension Controls Slider -->
+          <div style="background: rgba(15, 23, 42, 0.6); padding: 14px; border-radius: var(--radius-sm); border: 1px solid rgba(212, 175, 55, 0.2);">
+            <div class="sidebar-3d-group-title" style="margin-bottom: 8px;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3z"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+              مقاسات البوابة والفتحة
+            </div>
+            <div style="margin-bottom: 10px;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #cbd5e1; margin-bottom: 4px;">
+                <span>العرض المطلوبة:</span>
+                <strong id="sliderWidthVal" style="color: var(--color-accent-gold-light);">4.00 م</strong>
+              </div>
+              <input type="range" id="inputWidthRange" min="2.5" max="8.0" step="0.25" value="4.00" style="width: 100%; accent-color: var(--color-accent-gold); cursor: pointer;">
+            </div>
+
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.82rem; color: #cbd5e1; margin-bottom: 4px;">
+                <span>الارتفاع المطلوبة:</span>
+                <strong id="sliderHeightVal" style="color: var(--color-accent-gold-light);">3.00 م</strong>
+              </div>
+              <input type="range" id="inputHeightRange" min="2.0" max="5.0" step="0.25" value="3.00" style="width: 100%; accent-color: var(--color-accent-gold); cursor: pointer;">
+            </div>
+
+            <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(255, 255, 255, 0.15); display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.82rem; color: #94a3b8;">التكلفة التقديرية:</span>
+              <strong id="estimatedPriceText" style="font-size: 1.1rem; color: #fbbf24; font-family: var(--font-arabic);">21,600 ر.س</strong>
+            </div>
+          </div>
+
+          <!-- 4. Engineering Specs Summary Card -->
           <div class="spec-info-box">
             <h4 id="spec3DTitle">بوابة القصور الملكية (Luxury Palace Gate)</h4>
             <div class="spec-info-item">
@@ -351,8 +564,8 @@
             </div>
           </div>
 
-          <a href="quote.html" class="btn btn-primary" style="width: 100%; text-align: center; justify-content: center;" id="studioQuoteBtn">
-            طلب تصميم مخصص بالـ 3D ←
+          <a href="quote.html" class="btn btn-primary" id="studioQuoteBtn" style="width: 100%; text-align: center; justify-content: center; font-size: 0.95rem;">
+            طلب تسعيرة هذا التخصيص ←
           </a>
         </aside>
       </div>
@@ -445,6 +658,9 @@
     </div>
   </footer>
 
-  <script type="module" src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/viewer3d.js"></script>
+  <script src="js/image3d.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

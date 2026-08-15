@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8">
@@ -7,6 +7,14 @@
     <meta name="description"
       content="عراقة في الصناعة.. دقة في الهندسة. رواد الصناعات المعدنية وتشكيل المعادن والهياكل الفولاذية بالمملكة.">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+      }
+    }
+    </script>
   </head>
   <body>
 
@@ -33,11 +41,11 @@
               معنا</a>
           </nav>
 
-          <div style="display: flex; align-items: center; gap: 12px;">
+          <div class="header-actions">
             <a href="quote.html" class="btn-header-quote"
               id="headerQuoteBtn">اطلب عرض سعر</a>
             <button class="mobile-menu-toggle" id="menuToggle"
-              aria-label="القائمة">
+              aria-label="فتح قائمة أقسام الموقع" aria-expanded="false">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
@@ -347,6 +355,9 @@
       </div>
     </footer>
 
-    <script type="module" src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/viewer3d.js"></script>
+    <script src="js/image3d.js"></script>
+    <script src="js/main.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +6,14 @@
   <title>ابدأ مشروعك معنا | الإتقان للصناعات المعدنية</title>
   <meta name="description" content="املأ النموذج لنوفر لك عرض سعر دقيق يناسب احتياجات مشروعك من البوابات والأبواب والشتر والهياكل المعدنية.">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -27,9 +35,9 @@
           <a href="quote.html" class="nav-link active" id="navContact">تواصل معنا</a>
         </nav>
 
-        <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="header-actions">
           <a href="quote.html" class="btn-header-quote" id="headerQuoteBtn">اطلب عرض سعر</a>
-          <button class="mobile-menu-toggle" id="menuToggle" aria-label="القائمة">
+          <button class="mobile-menu-toggle" id="menuToggle" aria-label="فتح قائمة أقسام الموقع" aria-expanded="false">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -251,6 +259,9 @@
     </div>
   </footer>
 
-  <script type="module" src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/viewer3d.js"></script>
+  <script src="js/image3d.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

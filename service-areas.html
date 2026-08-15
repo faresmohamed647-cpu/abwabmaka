@@ -6,72 +6,45 @@
   <title>مناطق الخدمة والتغطية | شركة الإتقان للصناعات المعدنية</title>
   <meta name="description" content="تغطية شاملة لخدمات التصنيع، التركيب، والصيانة في الرياض، جدة، مكة، الدمام، الخبر، الجبيل، القصيم، وكافة مدن المملكة.">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+    }
+  }
+  </script>
 </head>
 <body>
 
-  <!-- Top Announcement Bar -->
-  <aside class="top-bar" aria-label="شريط الإعلانات ومعلومات التواصل">
-    <div class="container top-bar-inner">
-      <div class="top-bar-contacts">
-        <span class="top-bar-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          السبت - الخميس: ٨:٠٠ ص - ٦:٠٠ م
-        </span>
-        <a href="tel:+966553925444" class="top-bar-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          +966 55 392 5444
+  <!-- Site Header -->
+  <header class="site-header" id="mainHeader">
+    <div class="container">
+      <div class="header-inner">
+        <a href="index.html" class="brand-logo-text" id="brandLogo">
+          الإتقان للصناعات المعدنية
         </a>
-        <span class="top-bar-item">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          الرياض، المملكة العربية السعودية
-        </span>
-      </div>
-      <div class="top-bar-actions">
-        <a href="maintenance.html" class="top-bar-emergency">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          طوارئ الصيانة 24/7
-        </a>
-      </div>
-    </div>
-  </aside>
 
-  <!-- Site Header & Navigation -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="index.html" class="brand-logo" id="headerLogo">
-        <div class="logo-icon-wrap">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M3 9h18"/>
-            <path d="M9 21V9"/>
-            <path d="M15 21V9"/>
-          </svg>
+        <nav class="nav-menu" id="navMenu">
+          <a href="index.html" class="nav-link" id="navHome">الرئيسية</a>
+          <a href="about.html" class="nav-link" id="navAbout">من نحن</a>
+          <a href="services.html" class="nav-link" id="navServices">خدماتنا</a>
+          <a href="projects.html" class="nav-link" id="navProjects">أعمالنا</a>
+          <a href="maintenance.html" class="nav-link" id="navMaintenance">الصيانة</a>
+          <a href="areas.html" class="nav-link active" id="navAreas">المناطق</a>
+          <a href="contact.html" class="nav-link" id="navContact">تواصل معنا</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="quote.html" class="btn-header-quote" id="headerQuoteBtn">اطلب عرض سعر</a>
+          <button class="mobile-menu-toggle" id="menuToggle" aria-label="فتح قائمة أقسام الموقع" aria-expanded="false">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
-        <div class="brand-text-wrap">
-          <span class="brand-title">الإتقان</span>
-          <span class="brand-tagline">للصناعات المعدنية</span>
-        </div>
-      </a>
-
-      <nav class="nav-menu" id="mainNavMenu">
-        <a href="index.html" class="nav-link" id="navHome">الرئيسية</a>
-        <a href="about.html" class="nav-link" id="navAbout">من نحن</a>
-        <a href="services.html" class="nav-link" id="navServices">خدماتنا</a>
-        <a href="projects.html" class="nav-link" id="navProjects">أعمالنا</a>
-        <a href="maintenance.html" class="nav-link" id="navMaintenance">الصيانة</a>
-        <a href="service-areas.html" class="nav-link active" id="navAreas">مناطق الخدمة</a>
-        <a href="faq.html" class="nav-link" id="navFaq">الأسئلة الشائعة</a>
-        <a href="contact.html" class="nav-link" id="navContact">اتصل بنا</a>
-      </nav>
-
-      <div class="header-cta-wrap">
-        <a href="quote.html" class="btn btn-primary btn-sm" id="headerQuoteBtn">
-          <span>اطلب عرض سعر</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
-        <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="فتح القائمة">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
       </div>
     </div>
   </header>
@@ -354,6 +327,9 @@
     </button>
   </aside>
 
-  <script type="module" src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/viewer3d.js"></script>
+  <script src="js/image3d.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

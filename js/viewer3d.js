@@ -1,13 +1,14 @@
-import * as THREE from 'three';
+const THREE = typeof window !== 'undefined' && window.THREE ? window.THREE : null;
 
 /**
  * 3D Interactive Gate & Door Studio Visualizer
  * Built for Al-Itqan Metal Industries
  */
-export class Gate3DVisualizer {
+class Gate3DVisualizer {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
-    if (!this.container) return;
+    const ThreeLib = typeof window !== 'undefined' && window.THREE ? window.THREE : THREE;
+    if (!this.container || !ThreeLib) return;
 
     this.scene = null;
     this.camera = null;
@@ -48,33 +49,40 @@ export class Gate3DVisualizer {
   }
 
   init() {
-    // 1. Scene setup with bright luminous luxury architectural studio background
+    if (!THREE) return;
+
+    // 1. Scene setup with rich dark luxury architectural studio background
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0xf1f5f9);
-    this.scene.fog = new THREE.FogExp2(0xf1f5f9, 0.012);
+    this.scene.background = new THREE.Color(0x0f172a);
+    this.scene.fog = new THREE.FogExp2(0x0f172a, 0.015);
 
     // 2. Camera setup
     const rect = this.container.getBoundingClientRect();
-    const aspect = (rect.width || 800) / (rect.height || 500);
+    const aspect = (rect.width || 800) / (rect.height || 540);
     this.camera = new THREE.PerspectiveCamera(42, aspect, 0.1, 100);
     this.updateCameraPosition();
 
     // 3. Renderer setup
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
-    this.renderer.setSize(rect.width || 800, rect.height || 500);
+    this.renderer.setSize(rect.width || 800, rect.height || 540);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    this.renderer.toneMappingExposure = 1.15; // Natural luminous studio exposure
+    this.renderer.toneMappingExposure = 1.15;
 
     // Clear old canvas if any
     const oldCanvas = this.container.querySelector('canvas');
     if (oldCanvas) oldCanvas.remove();
-    this.container.appendChild(this.renderer.domElement);
-
-    // Ensure touch action is none so mobile gestures don't trigger native scroll
+    
+    this.renderer.domElement.style.position = 'absolute';
+    this.renderer.domElement.style.top = '0';
+    this.renderer.domElement.style.left = '0';
+    this.renderer.domElement.style.width = '100%';
+    this.renderer.domElement.style.height = '100%';
+    this.renderer.domElement.style.zIndex = '5';
     this.renderer.domElement.style.touchAction = 'none';
+    this.container.appendChild(this.renderer.domElement);
 
     // 4. Lights & Environment
     this.setupLighting();
@@ -142,12 +150,12 @@ export class Gate3DVisualizer {
   }
 
   buildStage() {
-    // Stage Pedestal (Bright luxury architectural porcelain / concrete floor)
-    const stageGeo = new THREE.CylinderGeometry(5.2, 5.4, 0.35, 64);
+    // Stage Pedestal (Expanded Widescreen Porcelain / Metallic Architectural Floor)
+    const stageGeo = new THREE.CylinderGeometry(8.5, 8.8, 0.35, 64);
     const stageMat = new THREE.MeshStandardMaterial({
-      color: 0xe2e8f0,
-      roughness: 0.22,
-      metalness: 0.12,
+      color: 0x1e2632,
+      roughness: 0.25,
+      metalness: 0.2,
     });
     this.stageMesh = new THREE.Mesh(stageGeo, stageMat);
     this.stageMesh.position.y = -0.175;
@@ -155,7 +163,7 @@ export class Gate3DVisualizer {
     this.scene.add(this.stageMesh);
 
     // Polished Brass accent ring around the stage
-    const ringGeo = new THREE.TorusGeometry(5.22, 0.04, 16, 64);
+    const ringGeo = new THREE.TorusGeometry(8.52, 0.05, 16, 64);
     const ringMat = new THREE.MeshStandardMaterial({
       color: 0xd4af37,
       roughness: 0.16,
@@ -166,10 +174,29 @@ export class Gate3DVisualizer {
     ringMesh.position.y = 0.005;
     this.scene.add(ringMesh);
 
-    // Ambient ground grid for engineering precision
-    const gridHelper = new THREE.GridHelper(10, 20, 0xd4af37, 0xcbd5e1);
+    // Ambient ground grid for engineering precision across full stage width
+    const gridHelper = new THREE.GridHelper(18, 36, 0xd4af37, 0x475569);
     gridHelper.position.y = 0.01;
     this.scene.add(gridHelper);
+
+    // Ambient floating gold architectural dust particles
+    const particleCount = 120;
+    const particlesGeo = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    for (let i = 0; i < particleCount; i++) {
+      particlePositions[i * 3] = (Math.random() - 0.5) * 16;
+      particlePositions[i * 3 + 1] = Math.random() * 5.5;
+      particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 16;
+    }
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    const particleMat = new THREE.PointsMaterial({
+      color: 0xd4af37,
+      size: 0.06,
+      transparent: true,
+      opacity: 0.75,
+    });
+    this.sparkleParticles = new THREE.Points(particlesGeo, particleMat);
+    this.scene.add(this.sparkleParticles);
   }
 
   initMaterials() {
@@ -861,6 +888,10 @@ export class Gate3DVisualizer {
       this.targetRotation.y += 0.0025;
     }
 
+    if (this.sparkleParticles) {
+      this.sparkleParticles.rotation.y += 0.001;
+    }
+
     // Smooth Damping for Camera Rotation & Zoom
     this.currentRotation.x += (this.targetRotation.x - this.currentRotation.x) * 0.08;
     this.currentRotation.y += (this.targetRotation.y - this.currentRotation.y) * 0.08;
@@ -905,4 +936,8 @@ export class Gate3DVisualizer {
       this.renderer.dispose();
     }
   }
+}
+
+if (typeof window !== 'undefined') {
+  window.Gate3DVisualizer = Gate3DVisualizer;
 }
