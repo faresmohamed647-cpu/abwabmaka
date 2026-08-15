@@ -166,6 +166,46 @@
 
         </div>
 
+        <!-- Interactive Google Map Section -->
+        <div class="luxury-map-section" style="margin-top: 50px;">
+          <div class="map-header-block" style="text-align: center; margin-bottom: 24px;">
+            <span class="section-badge" style="margin-bottom: 10px;">خريطة التوجيه والملاحة GPS</span>
+            <h2 style="margin-bottom: 8px;">موقع المقر الرئيسي والمصنع على الخريطة</h2>
+            <p style="color: var(--color-text-muted); font-size: 0.95rem;">يسعدنا استقبالكم في صالة العرض والمصنع - الرياض، المدينة الصناعية الثانية</p>
+          </div>
+
+          <div class="map-card-wrapper">
+            <!-- Google Maps Embed Iframe -->
+            <iframe 
+              src="https://maps.google.com/maps?q=24.5828,46.7725&hl=ar&z=14&output=embed" 
+              class="map-iframe"
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade"
+              title="موقع شركة الإتقان للصناعات المعدنية">
+            </iframe>
+
+            <!-- Floating Info Card Overlay -->
+            <div class="map-info-floating-box">
+              <div class="map-pin-badge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>المقر الرئيسي والمصنع</span>
+              </div>
+              <h4 style="color: #ffffff; font-size: 1.1rem; margin-bottom: 4px;">شركة الإتقان للصناعات المعدنية</h4>
+              <p style="color: #cbd5e1; font-size: 0.88rem; margin-bottom: 16px;">الرياض - المدينة الصناعية الثانية - طريق الخرج</p>
+              <div class="map-actions-row">
+                <a href="https://maps.app.goo.gl/Nrhg7DeWYAKB3daP6?g_st=aw" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm btn-map-nav">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                  <span>التوجيه المباشر عبر Google Maps</span>
+                </a>
+                <a href="tel:+966553925444" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: rgba(255,255,255,0.3);">
+                  <span>اتصل بالمقر</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- Branches Details Grid -->
         <div class="branches-section" style="margin-top: 60px;">
           <h2 style="text-align: center; margin-bottom: 32px;">عناوين الفروع ومراكز التصنيع</h2>
