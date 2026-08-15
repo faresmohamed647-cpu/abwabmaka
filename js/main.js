@@ -6,6 +6,7 @@ function initAllSiteScript() {
   setupProjectFilters();
   setupUploadBox();
   initQuoteFormPrefill();
+  initGeneralContactForm();
   setupProjectAnimations();
   setupHomeStudio();
   setupFaqAccordions();
@@ -281,6 +282,17 @@ function initQuoteFormPrefill() {
   form.addEventListener('submit', (event) => {
     event.preventDefault();
     showToastNotification('تم استلام طلبكم بنجاح! سيتواصل معكم مهندس مختص خلال 24 ساعة.');
+    form.reset();
+  });
+}
+
+function initGeneralContactForm() {
+  const form = document.getElementById('generalContactForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    showToastNotification('شكراً لتواصلكم! تم استلام رسالتكم وسيقوم فريق خدمة العملاء بالرد خلال ساعتين.');
     form.reset();
   });
 }
