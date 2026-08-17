@@ -7,7 +7,7 @@
   <meta name="description" content="ننفذ ونركب أجود حلول الأبواب والبوابات الحديدية والأوتوماتيكية والشتر بجودة عالية ودقة في التنفيذ في جميع مدن المملكة.">
   <!-- Animate.css Library for Smooth Hero & Element Entrances -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=logo3">
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script type="importmap">
@@ -25,7 +25,7 @@
     <div class="container">
       <div class="header-inner">
         <a href="index.html" class="header-brand" id="brandLogo" aria-label="أبواب مكة">
-          <img src="images/logo.svg" alt="أبواب مكة" class="header-brand-img">
+          <img src="images/logo.svg" alt="أبواب مكة" class="header-brand-img" width="44" height="44">
           <span class="header-brand-name">أبواب مكة</span>
         </a>
 
@@ -259,137 +259,9 @@
 
             <!-- 3D Interactive Object Model Viewport -->
             <div class="studio-3d-object-viewport" id="studio3DObjectViewport">
-              
-              <!-- Model 1: 3D Palace Gate (بوابة القصور الفاخرة - مجسم ثلاثي الأبعاد مع ميكانيزم محركات هيدروليكية ظاهر) -->
-              <div class="model-3d-container active-model" id="stagePalaceGate">
-                <div class="gate-3d-frame">
-                  
-                  <!-- Left Concrete/Steel Pillar with Motor Housing & 3D Hinges -->
-                  <div class="gate-pillar pillar-left">
-                    <div class="pillar-3d-side"></div>
-                    <div class="hinge-3d hinge-top"></div>
-                    <div class="hinge-3d hinge-bottom"></div>
-                    
-                    <!-- Italian Hydraulic Motor Housing -->
-                    <div class="motor-housing-unit motor-left">
-                      <div class="motor-label">24V HYDRAULIC</div>
-                      <div class="led-status-dot green"></div>
-                    </div>
-                  </div>
 
-                  <!-- Right Concrete/Steel Pillar with Motor Housing & 3D Hinges -->
-                  <div class="gate-pillar pillar-right">
-                    <div class="pillar-3d-side"></div>
-                    <div class="hinge-3d hinge-top"></div>
-                    <div class="hinge-3d hinge-bottom"></div>
-                    
-                    <!-- Italian Hydraulic Motor Housing -->
-                    <div class="motor-housing-unit motor-right">
-                      <div class="motor-label">24V HYDRAULIC</div>
-                      <div class="led-status-dot green"></div>
-                    </div>
-                  </div>
-
-                  <div class="gate-header-arch">
-                    <div class="arch-gold-emblem"></div>
-                  </div>
-                  
-                  <!-- Visible Dual-Stage Telescopic Hydraulic Piston Arms -->
-                  <div class="hydraulic-arm arm-left">
-                    <div class="piston-cylinder-outer"></div>
-                    <div class="piston-shaft-inner" id="pistonShaftLeft"></div>
-                    <div class="piston-ball-joint"></div>
-                  </div>
-                  <div class="hydraulic-arm arm-right">
-                    <div class="piston-cylinder-outer"></div>
-                    <div class="piston-shaft-inner" id="pistonShaftRight"></div>
-                    <div class="piston-ball-joint"></div>
-                  </div>
-
-                  <!-- 3D Gate Wing Left with Volumetric Depth & Mechanical Brackets -->
-                  <div class="gate-wing wing-3d-left" id="wingPalaceLeft">
-                    <!-- Front Metal Face -->
-                    <div class="wing-front-face">
-                      <svg viewBox="0 0 200 400" class="gate-svg-details">
-                        <!-- Outer frame -->
-                        <rect x="5" y="5" width="190" height="390" rx="4" fill="#17191c" stroke="#d4af37" stroke-width="4"/>
-                        <!-- Spear tips top -->
-                        <path d="M20,5 L20,-15 L25,-5 L30,-15 L30,5 M60,5 L60,-15 L65,-5 L70,-15 L70,5 M100,5 L100,-15 L105,-5 L110,-15 L110,5 M140,5 L140,-15 L145,-5 L150,-15 L150,5 M180,5 L180,-15 L185,-5 L190,-15 L190,5" fill="#d4af37"/>
-                        <!-- Vertical iron bars -->
-                        <line x1="30" y1="20" x2="30" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="60" y1="20" x2="60" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="90" y1="20" x2="90" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="120" y1="20" x2="120" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="150" y1="20" x2="150" y2="380" stroke="#333842" stroke-width="4"/>
-                        <!-- Intricate CNC Gold Lattice Centre -->
-                        <rect x="25" y="80" width="150" height="240" fill="none" stroke="#d4af37" stroke-width="3" rx="8"/>
-                        <path d="M25,80 L175,320 M175,80 L25,320 M100,80 L100,320 M25,200 L175,200" stroke="#d4af37" stroke-width="2.5"/>
-                        <circle cx="100" cy="200" r="35" fill="none" stroke="#d4af37" stroke-width="4"/>
-                        <polygon points="100,170 125,200 100,230 75,200" fill="#d4af37" opacity="0.85"/>
-                        <!-- Gold Handle -->
-                        <rect x="175" y="190" width="12" height="40" rx="3" fill="#d4af37"/>
-                      </svg>
-                    </div>
-                    <!-- 3D Solid Edge Thickness (80mm Steel Depth) -->
-                    <div class="wing-side-thickness edge-right"></div>
-                    <div class="wing-top-thickness"></div>
-                  </div>
-
-                  <!-- 3D Gate Wing Right with Volumetric Depth & Mechanical Brackets -->
-                  <div class="gate-wing wing-3d-right" id="wingPalaceRight">
-                    <!-- Front Metal Face -->
-                    <div class="wing-front-face">
-                      <svg viewBox="0 0 200 400" class="gate-svg-details">
-                        <!-- Outer frame -->
-                        <rect x="5" y="5" width="190" height="390" rx="4" fill="#17191c" stroke="#d4af37" stroke-width="4"/>
-                        <!-- Spear tips top -->
-                        <path d="M20,5 L20,-15 L25,-5 L30,-15 L30,5 M60,5 L60,-15 L65,-5 L70,-15 L70,5 M100,5 L100,-15 L105,-5 L110,-15 L110,5 M140,5 L140,-15 L145,-5 L150,-15 L150,5 M180,5 L180,-15 L185,-5 L190,-15 L190,5" fill="#d4af37"/>
-                        <!-- Vertical iron bars -->
-                        <line x1="30" y1="20" x2="30" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="60" y1="20" x2="60" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="90" y1="20" x2="90" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="120" y1="20" x2="120" y2="380" stroke="#333842" stroke-width="4"/>
-                        <line x1="150" y1="20" x2="150" y2="380" stroke="#333842" stroke-width="4"/>
-                        <!-- Intricate CNC Gold Lattice Centre -->
-                        <rect x="25" y="80" width="150" height="240" fill="none" stroke="#d4af37" stroke-width="3" rx="8"/>
-                        <path d="M25,80 L175,320 M175,80 L25,320 M100,80 L100,320 M25,200 L175,200" stroke="#d4af37" stroke-width="2.5"/>
-                        <circle cx="100" cy="200" r="35" fill="none" stroke="#d4af37" stroke-width="4"/>
-                        <polygon points="100,170 125,200 100,230 75,200" fill="#d4af37" opacity="0.85"/>
-                        <!-- Gold Handle -->
-                        <rect x="13" y="190" width="12" height="40" rx="3" fill="#d4af37"/>
-                      </svg>
-                    </div>
-                    <!-- 3D Solid Edge Thickness (80mm Steel Depth) -->
-                    <div class="wing-side-thickness edge-left"></div>
-                    <div class="wing-top-thickness"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Model 2: 3D Modern Villa Pivot Door (باب فيلا محوري معاصر مع ميكانيزم المظروف الهيدروليكي) -->
-              <div class="model-3d-container" id="stagePivotDoor">
-                <div class="pivot-3d-frame">
-                  <div class="pivot-frame-border"></div>
-                  
-                  <!-- Hydraulic Floor & Overhead Spindle Pins -->
-                  <div class="pivot-spindle-pin pin-top"></div>
-                  <div class="pivot-spindle-pin pin-bottom"></div>
-
-                  <div class="pivot-door-leaf" id="leafPivotDoor">
-                    <div class="pivot-panel-surface">
-                      <div class="panel-titanium-texture"></div>
-                      <div class="led-light-strip"></div>
-                      <div class="brass-long-handle"></div>
-                    </div>
-                    <!-- Solid 3D Thickness Side Edge -->
-                    <div class="door-edge-thickness"></div>
-                    <div class="door-top-thickness"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Model 3: 3D Smart Garage Shutter (شتر حماية أوتوماتيكي مع محرك أنبوبي وتروس حركية) -->
-              <div class="model-3d-container" id="stageShutter">
+              <!-- 3D Smart Garage Shutter (شتر حماية أوتوماتيكي مع محرك أنبوبي وتروس حركية) -->
+              <div class="model-3d-container active-model" id="stageShutter">
                 <div class="shutter-3d-frame">
                   <div class="shutter-hood-box">
                     <span class="shutter-logo-badge">SOMFY TUBULAR DRIVE 433MHz</span>
@@ -447,7 +319,7 @@
           <div class="studio-3d-bottom-tools" id="studio3DBottomTools">
             <button class="tool-3d-btn" id="btn3DOpenClose" title="تشغيل محاكاة الفتح والإغلاق">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span class="btn-label" id="btnOpenCloseText">محاكاة فتح البوابة</span>
+              <span class="btn-label" id="btnOpenCloseText">رفع الشتر 3D</span>
             </button>
             <button class="tool-3d-btn active" id="btn3DAutoRotate" title="تفعيل المؤثرات الحركية 360°">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
@@ -480,15 +352,7 @@
               اختر نموذج المنتج
             </div>
             <div class="model-selector-grid">
-              <button class="model-choice-btn active" data-3d-model="palaceGate" id="modelPalaceGate">
-                <strong>بوابة القصور الفاخرة</strong>
-                <span>حديد مشغول + زخارف ليزرية + رؤوس ذهبية</span>
-              </button>
-              <button class="model-choice-btn" data-3d-model="pivotDoor" id="modelPivotDoor">
-                <strong>باب فيلا محوري معاصر</strong>
-                <span>تيتانيوم مصمت + إضاءة LED + مقبض نحاسي</span>
-              </button>
-              <button class="model-choice-btn" data-3d-model="shutter" id="modelShutter">
+              <button class="model-choice-btn active" data-3d-model="shutter" id="modelShutter">
                 <strong>شتر حماية أوتوماتيكي</strong>
                 <span>شرائح ألمنيوم معزولة + محرك أنبوبي ذكي</span>
               </button>
@@ -542,27 +406,22 @@
               </div>
               <input type="range" id="inputHeightRange" min="2.0" max="5.0" step="0.25" value="3.00" style="width: 100%; accent-color: var(--color-accent-gold); cursor: pointer;">
             </div>
-
-            <div style="margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(255, 255, 255, 0.15); display: flex; justify-content: space-between; align-items: center;">
-              <span style="font-size: 0.82rem; color: #94a3b8;">التكلفة التقديرية:</span>
-              <strong id="estimatedPriceText" style="font-size: 1.1rem; color: #fbbf24; font-family: var(--font-arabic);">21,600 ر.س</strong>
-            </div>
           </div>
 
           <!-- 4. Engineering Specs Summary Card -->
           <div class="spec-info-box">
-            <h4 id="spec3DTitle">بوابة القصور الملكية (Luxury Palace Gate)</h4>
+            <h4 id="spec3DTitle">شتر حماية أوتوماتيكي معزول (Industrial Roller Shutter)</h4>
             <div class="spec-info-item">
               <span>الخامة:</span>
-              <span id="spec3DMaterial">فولاذ مقسى 6 مم + تطعيمات برونز ذهبي كهرستاتيكي</span>
+              <span id="spec3DMaterial">شرائح ألمنيوم مبثوق مزدوجة محقونة بالفوم العازل</span>
             </div>
             <div class="spec-info-item">
               <span>المحرك:</span>
-              <span id="spec3DMotor">نظام محركات أوتوماتيكية إيطالية هيدروليكية 24V</span>
+              <span id="spec3DMotor">محرك فرنسي أنبوبي (Somfy) مع بطارية طوارئ UPS</span>
             </div>
             <div class="spec-info-item">
               <span>المتانة:</span>
-              <span id="spec3DRating">معيار مقاومة الرياح والطقس: IP68 عالي التحمل</span>
+              <span id="spec3DRating">عزل حراري وصوتي فائق مع قفل أوتوماتيكي ضد الاقتحام</span>
             </div>
           </div>
 
@@ -581,7 +440,7 @@
         <!-- Col 1: Brand -->
         <div>
           <a href="index.html" class="footer-brand" aria-label="أبواب مكة">
-            <img src="images/logo.svg" alt="أبواب مكة" class="footer-brand-img">
+            <img src="images/logo.svg" alt="أبواب مكة" class="footer-brand-img" width="52" height="52">
             <span class="footer-brand-name">أبواب مكة</span>
           </a>
           <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 16px;">

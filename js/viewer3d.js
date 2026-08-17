@@ -17,7 +17,7 @@ class Gate3DVisualizer {
     this.animationFrameId = null;
     
     // State
-    this.currentModelType = 'palaceGate'; // 'palaceGate', 'pivotDoor', 'shutter'
+    this.currentModelType = 'shutter'; // 'palaceGate', 'pivotDoor', 'shutter'
     this.isOpen = false;
     this.lightingMode = 'day'; // 'day', 'night', 'blueprint'
     this.isWireframe = false;

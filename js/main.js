@@ -33,7 +33,7 @@ function setupMobileNavigation() {
       head.className = 'mobile-nav-drawer-head';
       head.innerHTML = `
         <div class="mobile-nav-brand">
-          <img src="images/logo.svg" alt="أبواب مكة" class="mobile-nav-brand-img">
+          <img src="images/logo.svg" alt="أبواب مكة" class="mobile-nav-brand-img" width="36" height="36">
           <span>أبواب مكة</span>
         </div>
         <div class="mobile-nav-label">أقسام الموقع الرئيسي</div>
@@ -386,7 +386,7 @@ function setupHomeStudio() {
   if (!container) return;
 
   // --- State ---
-  let activeModel = 'palaceGate';
+  let activeModel = 'shutter';
   let activeFinish = 'royalBlack';
   let isGateOpen = false;
   let lightingMode = 'day'; // 'day' | 'night'
@@ -418,13 +418,6 @@ function setupHomeStudio() {
     forest:     'sepia(0.65) saturate(2.5) hue-rotate(85deg) brightness(0.9) contrast(1.15)'
   };
 
-  // --- Pricing per model (SAR per m²) ---
-  const PRICE_PER_SQM = {
-    palaceGate: 1800,
-    pivotDoor:  2200,
-    shutter:    1200
-  };
-
   // --- Elements ---
   const lightingOverlay = document.getElementById('lightingOverlay');
   const cadGrid         = document.getElementById('blueprintCadGrid');
@@ -443,7 +436,6 @@ function setupHomeStudio() {
   const heightSlider    = document.getElementById('inputHeightRange');
   const widthValLabel   = document.getElementById('sliderWidthVal');
   const heightValLabel  = document.getElementById('sliderHeightVal');
-  const priceText       = document.getElementById('estimatedPriceText');
   const statusText      = document.getElementById('studioStageStatusText');
   const btnOpenCloseText = document.getElementById('btnOpenCloseText');
   const btnLightingText  = document.getElementById('btnLightingText');
@@ -474,15 +466,12 @@ function setupHomeStudio() {
     }
   };
 
-  // --- Helper: update price & labels ---
-  const updatePrice = () => {
-    if (!priceText || !widthSlider || !heightSlider) return;
+  // --- Helper: update dimension labels ---
+  const updateDimensionLabels = () => {
+    if (!widthSlider || !heightSlider) return;
     const w = parseFloat(widthSlider.value);
     const h = parseFloat(heightSlider.value);
-    const rate = PRICE_PER_SQM[activeModel] || 1800;
-    const price = Math.round(w * h * rate);
-    
-    priceText.textContent = price.toLocaleString('ar-SA') + ' ر.س';
+
     if (widthValLabel) widthValLabel.textContent = w.toFixed(2) + ' م';
     if (heightValLabel) heightValLabel.textContent = h.toFixed(2) + ' م';
     if (cadWidthText) cadWidthText.textContent = 'العرض: ' + w.toFixed(2) + ' م';
@@ -704,22 +693,26 @@ function setupHomeStudio() {
     syncBtn(btnCad, false);
     syncBtn(btnAutoRotate, true);
     
-    if (btnOpenCloseText) btnOpenCloseText.textContent = 'محاكاة فتح البوابة 3D';
+    if (btnOpenCloseText) btnOpenCloseText.textContent = 'رفع الشتر 3D';
     if (btnLightingText) btnLightingText.textContent = 'إضاءة نهارية';
     if (statusText) statusText.textContent = 'معاينة 3D تفاعلية حية';
     
     if (widthSlider) widthSlider.value = "4.00";
     if (heightSlider) heightSlider.value = "3.00";
 
+    activeModel = 'shutter';
+    activeFinish = 'royalBlack';
+
     if (visualizer) {
       visualizer.resetCamera();
-      visualizer.loadModel('palaceGate');
+      visualizer.loadModel('shutter');
       visualizer.setFinish('royalBlack');
     }
 
     update3DTransform();
     update3DStageModel();
-    updatePrice();
+    updateSpecDetails('shutter');
+    updateDimensionLabels();
     showToastNotification('تمت إعادة ضبط الاستوديو ثلاثي الأبعاد 3D بنجاح');
   };
 
@@ -764,7 +757,7 @@ function setupHomeStudio() {
 
       update3DStageModel();
       updateSpecDetails(modelName);
-      updatePrice();
+      updateDimensionLabels();
       updateStudioQuoteLink();
       showToastNotification('تم تحميل مجسم 3D: ' + getModelNameArabic(modelName));
     });
@@ -792,13 +785,13 @@ function setupHomeStudio() {
   // Dimension sliders with real time physical 3D model scaling
   if (widthSlider) {
     widthSlider.addEventListener('input', () => {
-      updatePrice();
+      updateDimensionLabels();
       updateStudioQuoteLink();
     });
   }
   if (heightSlider) {
     heightSlider.addEventListener('input', () => {
-      updatePrice();
+      updateDimensionLabels();
       updateStudioQuoteLink();
     });
   }
@@ -806,7 +799,8 @@ function setupHomeStudio() {
   // Initial Sync & 360 Drag Controls
   update3DTransform();
   update3DStageModel();
-  updatePrice();
+  updateSpecDetails('shutter');
+  updateDimensionLabels();
   updateStudioQuoteLink();
   init3DOrbitControls();
 }
