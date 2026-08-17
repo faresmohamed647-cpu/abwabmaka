@@ -6,6 +6,7 @@
   <title>مناطق الخدمة والتغطية | شركة أبواب مكة</title>
   <meta name="description" content="تغطية شاملة لخدمات التصنيع، التركيب، والصيانة في الرياض، جدة، مكة، الدمام، الخبر، الجبيل، القصيم، وكافة مدن المملكة.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script type="importmap">
   {
@@ -21,8 +22,9 @@
   <header class="site-header" id="mainHeader">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="brand-logo-text" id="brandLogo">
-          أبواب مكة
+        <a href="index.html" class="header-brand" id="brandLogo" aria-label="أبواب مكة">
+          <img src="images/logo.svg" alt="أبواب مكة" class="header-brand-img">
+          <span class="header-brand-name">أبواب مكة</span>
         </a>
 
         <nav class="nav-menu" id="navMenu">
@@ -31,7 +33,7 @@
           <a href="services.html" class="nav-link" id="navServices">خدماتنا</a>
           <a href="projects.html" class="nav-link" id="navProjects">أعمالنا</a>
           <a href="maintenance.html" class="nav-link" id="navMaintenance">الصيانة</a>
-          <a href="areas.html" class="nav-link active" id="navAreas">المناطق</a>
+          <a href="areas.html" class="nav-link" id="navAreas">موقعنا</a>
           <a href="contact.html" class="nav-link" id="navContact">تواصل معنا</a>
         </nav>
 
@@ -238,15 +240,10 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <div class="brand-logo" style="margin-bottom: 16px;">
-            <div class="logo-icon-wrap" style="background: #1e293b; border-color: var(--color-accent);">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M15 21V9"/></svg>
-            </div>
-            <div class="brand-text-wrap">
-              <span class="brand-title" style="color: #ffffff;">أبواب مكة</span>
-              <span class="brand-tagline">للصناعات المعدنية والأوتوماتيكية</span>
-            </div>
-          </div>
+          <a href="index.html" class="footer-brand footer-brand-on-dark" aria-label="أبواب مكة">
+            <img src="images/logo.svg" alt="أبواب مكة" class="footer-brand-img">
+            <span class="footer-brand-name">أبواب مكة</span>
+          </a>
           <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.7; margin-bottom: 20px;">
             الصرح الصناعي الرائد في تصنيع وتركيب البوابات الحديدية الفاخرة، الأبواب الأوتوماتيكية، وأنظمة الشتر المعزولة بالمملكة.
           </p>

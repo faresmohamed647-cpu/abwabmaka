@@ -6,6 +6,7 @@
   <title>خدمات الصيانة والدعم الفني | أبواب مكة</title>
   <meta name="description" content="عقود صيانة دورية وخدمات طوارئ للبوابات الأوتوماتيكية، الشتر، والأبواب الحديدية لكبرى المنشآت بالمملكة.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script type="importmap">
   {
@@ -21,8 +22,9 @@
   <header class="site-header" id="mainHeader">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="brand-logo-text" id="brandLogo">
-          أبواب مكة
+        <a href="index.html" class="header-brand" id="brandLogo" aria-label="أبواب مكة">
+          <img src="images/logo.svg" alt="أبواب مكة" class="header-brand-img">
+          <span class="header-brand-name">أبواب مكة</span>
         </a>
 
         <nav class="nav-menu" id="navMenu">
@@ -31,8 +33,8 @@
           <a href="services.html" class="nav-link" id="navServices">خدماتنا</a>
           <a href="projects.html" class="nav-link" id="navProjects">أعمالنا</a>
           <a href="maintenance.html" class="nav-link active" id="navMaintenance">الصيانة</a>
-          <a href="areas.html" class="nav-link" id="navAreas">المناطق</a>
-          <a href="quote.html" class="nav-link" id="navContact">تواصل معنا</a>
+          <a href="areas.html" class="nav-link" id="navAreas">موقعنا</a>
+          <a href="contact.html" class="nav-link" id="navContact">تواصل معنا</a>
         </nav>
 
         <div class="header-actions">
@@ -141,7 +143,10 @@
     <div class="container">
       <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap;">
         <div style="max-width: 420px;">
-          <h4 class="footer-brand-title">أبواب مكة</h4>
+          <a href="index.html" class="footer-brand" aria-label="أبواب مكة">
+            <img src="images/logo.svg" alt="أبواب مكة" class="footer-brand-img">
+            <span class="footer-brand-name">أبواب مكة</span>
+          </a>
           <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 16px;">
             © 2025 أبواب مكة. جميع الحقوق محفوظة.
           </p>

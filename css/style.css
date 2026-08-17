@@ -597,7 +597,7 @@ select {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding: 16px 0;
+  padding: 8px 0;
 }
 
 .site-header .container {
@@ -634,6 +634,75 @@ body.nav-menu-open {
   color: var(--color-text-main);
   letter-spacing: -0.02em;
   white-space: nowrap;
+}
+
+.header-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  text-decoration: none;
+  flex-shrink: 0;
+  line-height: 1;
+  color: #15233c;
+}
+
+.header-brand-img {
+  height: 58px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.header-brand:hover {
+  opacity: 0.88;
+}
+
+.header-brand-name {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #15233c;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+.footer-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.footer-brand-img {
+  height: 68px;
+  width: auto;
+  display: block;
+}
+
+.footer-brand-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+}
+
+.footer-brand-on-dark {
+  background: #faf8f5;
+  padding: 10px 14px 8px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-brand-on-dark .footer-brand-name {
+  color: #15233c;
+}
+
+.mobile-nav-brand-img {
+  height: 52px;
+  width: auto;
+  display: block;
 }
 
 .nav-menu {
@@ -3837,7 +3906,15 @@ body.nav-menu-open {
   }
 
   .site-header {
-    padding: 10px 0;
+    padding: 6px 0;
+  }
+
+  .header-brand-img {
+    height: 50px;
+  }
+
+  .header-brand-name {
+    font-size: 0.8rem;
   }
 
   .header-inner {
@@ -3874,6 +3951,10 @@ body.nav-menu-open {
   }
 
   .mobile-nav-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
     font-size: 0.95rem;
     font-weight: 800;
     color: var(--color-text-main);
@@ -4568,14 +4649,14 @@ body.nav-menu-open {
 .vip-speed-dial-trigger {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
   border: 1px solid rgba(212, 175, 55, 0.6);
-  padding: 10px 20px;
-  border-radius: 40px;
+  padding: 14px 26px;
+  border-radius: 44px;
   color: #ffffff;
   font-family: var(--font-arabic);
-  font-size: 0.92rem;
+  font-size: 1.08rem;
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(212, 175, 55, 0.25);
@@ -4617,7 +4698,7 @@ body.nav-menu-open {
 /* Speed Dial Expanded Menu */
 .vip-speed-dial-menu {
   position: absolute;
-  bottom: 64px;
+  bottom: 76px;
   left: 0;
   display: flex;
   flex-direction: column;
@@ -4626,7 +4707,7 @@ body.nav-menu-open {
   pointer-events: none;
   transform: translateY(20px) scale(0.9);
   transition: opacity 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  min-width: 210px;
+  min-width: 230px;
 }
 
 .vip-speed-dial-widget.open .vip-speed-dial-menu {
@@ -4643,11 +4724,11 @@ body.nav-menu-open {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(212, 175, 55, 0.35);
-  padding: 10px 16px;
+  padding: 12px 18px;
   border-radius: 30px;
   color: #ffffff;
   text-decoration: none;
-  font-size: 0.86rem;
+  font-size: 0.95rem;
   font-weight: 700;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
   transition: all 0.25s ease;
@@ -4660,8 +4741,8 @@ body.nav-menu-open {
 }
 
 .dial-icon {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4675,6 +4756,9 @@ body.nav-menu-open {
 }
 
 /* Individual Channel Accent Colors */
+.dial-map .dial-icon { background: #d4af37; color: #111827; }
+.dial-map:hover { border-color: #d4af37; box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4); }
+
 .dial-phone .dial-icon { background: #22c55e; color: #ffffff; }
 .dial-phone:hover { border-color: #22c55e; box-shadow: 0 8px 25px rgba(34, 197, 94, 0.35); }
 
@@ -4817,6 +4901,16 @@ body.nav-menu-open {
   .map-actions-row .btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+.map-card-wrapper-lg {
+  height: 720px;
+}
+
+@media (max-width: 768px) {
+  .map-card-wrapper-lg {
+    height: 540px;
   }
 }
 

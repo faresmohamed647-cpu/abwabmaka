@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 198" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="gold" x1="20" y1="8" x2="180" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#E8D19A"/>
+      <stop offset="45%" stop-color="#C9A45E"/>
+      <stop offset="100%" stop-color="#A7843E"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="40" y1="20" x2="160" y2="190" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#243656"/>
+      <stop offset="100%" stop-color="#15233C"/>
+    </linearGradient>
+    <mask id="swooshCut">
+      <rect width="200" height="198" fill="#fff"/>
+      <path d="M18 118 L182 102 L182 114 L18 130 Z" fill="#000"/>
+      <path d="M18 136 L182 120 L182 132 L18 148 Z" fill="#000"/>
+    </mask>
+  </defs>
+
+  <path
+    mask="url(#swooshCut)"
+    d="M38 186 V108 C38 64 64 34 100 18 C136 34 162 64 162 108 V186"
+    stroke="url(#navy)"
+    stroke-width="8"
+    stroke-linecap="round"
+  />
+  <path
+    mask="url(#swooshCut)"
+    d="M50 186 V110 C50 72 72 44 100 30 C128 44 150 72 150 110 V186"
+    stroke="url(#gold)"
+    stroke-width="3.4"
+    stroke-linecap="round"
+  />
+  <path
+    mask="url(#swooshCut)"
+    d="M60 186 V112 C60 78 76 52 100 40 C124 52 140 78 140 112 V186"
+    stroke="url(#navy)"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+
+  <path d="M16 119 L184 102.5 L184 113.5 L16 130 Z" fill="url(#navy)"/>
+  <path d="M16 122 L184 105.5 L184 108.8 L16 125.3 Z" fill="url(#gold)"/>
+  <path d="M16 137 L184 120.5 L184 131.5 L16 148 Z" fill="url(#navy)"/>
+  <path d="M16 140 L184 123.5 L184 126.8 L16 143.3 Z" fill="url(#gold)"/>
+
+  <g transform="translate(100 28)">
+    <g fill="url(#gold)" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-26 16 L16 -9" stroke-width="2.4" fill="none"/>
+      <path d="M-28 18.5 L-21 11.5 L-18.5 14 L-25.5 21 Z"/>
+      <circle cx="-23.2" cy="16.2" r="1.5"/>
+      <path d="M26 16 L-16 -9" stroke-width="2.4" fill="none"/>
+      <path d="M28 18.5 L21 11.5 L18.5 14 L25.5 21 Z"/>
+      <circle cx="23.2" cy="16.2" r="1.5"/>
+    </g>
+    <path d="M-1.6 10 C-1.2 2 1.2 2 1.6 10 L1.1 18 L-1.1 18 Z" fill="url(#gold)"/>
+    <g fill="url(#gold)">
+      <path d="M0 1 C-7 -1 -14 4 -16 10 C-8 4 -3 4 0 1Z"/>
+      <path d="M0 1 C-6 -6 -14 -6 -18 -1 C-9 -4 -3 0 0 1Z"/>
+      <path d="M0 1 C-2 -8 -8 -13 -14 -12 C-6 -9 0 -5 0 1Z"/>
+      <path d="M0 1 C2 -9 0 -16 0 -19 C-1 -12 -1 -5 0 1Z"/>
+      <path d="M0 1 C2 -8 8 -13 14 -12 C6 -9 0 -5 0 1Z"/>
+      <path d="M0 1 C6 -6 14 -6 18 -1 C9 -4 3 0 0 1Z"/>
+      <path d="M0 1 C7 -1 14 4 16 10 C8 4 3 4 0 1Z"/>
+    </g>
+  </g>
+</svg>

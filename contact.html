@@ -6,6 +6,7 @@
   <title>اتصل بنا | شركة أبواب مكة</title>
   <meta name="description" content="تواصل مع شركة أبواب مكة. فروعنا في الرياض، جدة، والدمام. أرقام التواصل المباشرة وخدمة العملاء.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script type="importmap">
   {
@@ -21,8 +22,9 @@
   <header class="site-header" id="mainHeader">
     <div class="container">
       <div class="header-inner">
-        <a href="index.html" class="brand-logo-text" id="brandLogo">
-          أبواب مكة
+        <a href="index.html" class="header-brand" id="brandLogo" aria-label="أبواب مكة">
+          <img src="images/logo.svg" alt="أبواب مكة" class="header-brand-img">
+          <span class="header-brand-name">أبواب مكة</span>
         </a>
 
         <nav class="nav-menu" id="navMenu">
@@ -31,7 +33,7 @@
           <a href="services.html" class="nav-link" id="navServices">خدماتنا</a>
           <a href="projects.html" class="nav-link" id="navProjects">أعمالنا</a>
           <a href="maintenance.html" class="nav-link" id="navMaintenance">الصيانة</a>
-          <a href="areas.html" class="nav-link" id="navAreas">المناطق</a>
+          <a href="areas.html" class="nav-link" id="navAreas">موقعنا</a>
           <a href="contact.html" class="nav-link active" id="navContact">تواصل معنا</a>
         </nav>
 
@@ -85,21 +87,15 @@
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="contactEmail">البريد الإلكتروني <span style="color: var(--color-error);">*</span></label>
-                  <input type="email" class="form-input" id="contactEmail" placeholder="khalid@example.com" dir="ltr" required>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="contactSubject">نوع الاستفسار</label>
-                  <select class="form-select" id="contactSubject">
-                    <option value="quote">طلب عرض سعر لمشروع جديد</option>
-                    <option value="technical">استشارة فنية وهندسية</option>
-                    <option value="maintenance">استفسار عن عقود الصيانة</option>
-                    <option value="partnership">شراكة ومقاولات كبرى</option>
-                    <option value="other">استفسار عام</option>
-                  </select>
-                </div>
+              <div class="form-group">
+                <label class="form-label" for="contactSubject">نوع الاستفسار</label>
+                <select class="form-select" id="contactSubject">
+                  <option value="quote">طلب عرض سعر لمشروع جديد</option>
+                  <option value="technical">استشارة فنية وهندسية</option>
+                  <option value="maintenance">استفسار عن عقود الصيانة</option>
+                  <option value="partnership">شراكة ومقاولات كبرى</option>
+                  <option value="other">استفسار عام</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -262,7 +258,10 @@
       <div class="footer-columns-grid">
         <!-- Col 1: Brand -->
         <div>
-          <h4 class="footer-brand-title">أبواب مكة</h4>
+          <a href="index.html" class="footer-brand" aria-label="أبواب مكة">
+            <img src="images/logo.svg" alt="أبواب مكة" class="footer-brand-img">
+            <span class="footer-brand-name">أبواب مكة</span>
+          </a>
           <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 16px;">
             هندسة صناعية فاخرة تلبي تطلعات مشاريعكم بأعلى معايير الجودة والصلابة.
           </p>
