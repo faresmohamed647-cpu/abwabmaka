@@ -1518,6 +1518,30 @@ body.nav-menu-open {
   gap: 24px;
 }
 
+.works-category-block {
+  margin-top: 48px;
+}
+
+.works-category-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.works-category-head h2 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+.works-category-head .eyebrow-latin {
+  margin-bottom: 6px;
+  display: block;
+}
+
 .project-item-card {
   background-color: #ffffff;
   border: 1px solid var(--color-border);

@@ -57,6 +57,56 @@ const PROJECT_CATALOG = {
     finish: 'industrialSteel',
     img: 'images/auto_gate_industrial.jpg',
     specs: ['عوارض فولاذية ثقيلة مقاومة للاهتراء', 'محركات صناعية 3-Phase', 'عقود صيانة شاملة دورية', 'فحص واختبار ميكانيكي معتمد'],
+  },
+  projWindowShutterHero: {
+    id: 'projWindowShutterHero',
+    title: 'نوافذ شتر ألمنيوم للفلل',
+    category: 'نوافذ شتر',
+    city: 'الرياض',
+    modelType: 'shutter',
+    finish: 'bronze',
+    img: 'images/window_shutter.jpg',
+    specs: ['شتر نوافذ ألمنيوم بعزل حراري', 'صندوق شتر مدمج بإطار النافذة', 'تشغيل يدوي أو بمحرك أنبوبي', 'طلاء مقاوم لأشعة الشمس'],
+  },
+  projAmericanDoorHero: {
+    id: 'projAmericanDoorHero',
+    title: 'باب أمريكي فاخر بزجاج جانبي',
+    category: 'أبواب أمريكي',
+    city: 'جدة',
+    modelType: 'pivotDoor',
+    finish: 'royalBlack',
+    img: 'images/american_door.jpg',
+    specs: ['باب أمريكي بألواح غائرة وتصميم كلاسيكي', 'زجاج جانبي (سايدلايت) بإطار معدني', 'مقبض طولي فاخر وقفل إلكتروني', 'دهان حراري مقاوم للخدش والصدأ'],
+  },
+  projPatioDoorHero: {
+    id: 'projPatioDoorHero',
+    title: 'أبواب باريو زجاجية منزلقة',
+    category: 'أبواب باريو',
+    city: 'الخبر',
+    modelType: 'pivotDoor',
+    finish: 'titanium',
+    img: 'images/patio_door.jpg',
+    specs: ['نظام باريو منزلق متعدد الألواح', 'بروفايل ألمنيوم نحيف وإطلالة بانورامية', 'عزل صوتي وحراري للواجهات الزجاجية', 'فتحة واسعة بين الداخل والخارج'],
+  },
+  projTiltShutterHero: {
+    id: 'projTiltShutterHero',
+    title: 'نوافذ تيلت توب شتر',
+    category: 'تيلت توب شتر',
+    city: 'الرياض',
+    modelType: 'shutter',
+    finish: 'bronze',
+    img: 'images/tilt_top_shutter.jpg',
+    specs: ['نافذة تيلت آند تيرن مع شتر مدمج', 'فتحة علوية للتهوية مع بقاء التأمين', 'شتر ألمنيوم قابل للرفع الجزئي', 'إطار ألمنيوم أنثراسايت مقاوم للعوامل الجوية'],
+  },
+  projSwingDoorHero: {
+    id: 'projSwingDoorHero',
+    title: 'باب سوينج زجاجي حديث',
+    category: 'أبواب سوينج',
+    city: 'مكة المكرمة',
+    modelType: 'pivotDoor',
+    finish: 'royalBlack',
+    img: 'images/swing_door.jpg',
+    specs: ['باب سوينج بمفصلات مخفية وفتحة واسعة', 'زجاج سيكوريت بإطار ألمنيوم أسود', 'مقبض طولي حديث وتركيب محكم', 'مناسب لمداخل الفلل والمشاريع السكنية'],
   }
 };
 
@@ -879,8 +929,8 @@ function bindClickableCards() {
         const category = catEl ? catEl.textContent.trim() : 'صناعات معدنية';
 
         let modelType = 'palaceGate';
-        if (title.includes('أوتوماتيك') || category.includes('أوتوماتيك') || title.includes('باب')) modelType = 'pivotDoor';
-        if (title.includes('شتر') || category.includes('شتر')) modelType = 'shutter';
+        if (title.includes('أوتوماتيك') || category.includes('أوتوماتيك') || title.includes('باب') || title.includes('سوينج') || title.includes('أمريكي') || title.includes('باريو') || category.includes('سوينج') || category.includes('أمريكي') || category.includes('باريو')) modelType = 'pivotDoor';
+        if (title.includes('شتر') || category.includes('شتر') || title.includes('تيلت') || category.includes('تيلت')) modelType = 'shutter';
 
         pData = {
           id: cardId || 'projDefault',

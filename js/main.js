@@ -173,18 +173,30 @@ function initHeroParallax() {
 function setupProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-tab-btn');
   const projectCards = document.querySelectorAll('.project-item-card');
+  const groups = document.querySelectorAll(
+    '.works-category-block, .projects-masonry-grid, .projects-masonry-grid-three',
+  );
   if (!filterBtns.length || !projectCards.length) return;
+
+  const applyFilter = (filterVal) => {
+    projectCards.forEach((card) => {
+      const category = card.getAttribute('data-category');
+      card.style.display = filterVal === 'all' || category === filterVal ? '' : 'none';
+    });
+
+    groups.forEach((group) => {
+      const cards = group.querySelectorAll('.project-item-card');
+      if (!cards.length) return;
+      const hasVisible = [...cards].some((card) => card.style.display !== 'none');
+      group.style.display = hasVisible ? '' : 'none';
+    });
+  };
 
   filterBtns.forEach((btn) => {
     btn.addEventListener('click', () => {
       filterBtns.forEach((item) => item.classList.remove('active'));
       btn.classList.add('active');
-
-      const filterVal = btn.getAttribute('data-filter');
-      projectCards.forEach((card) => {
-        const category = card.getAttribute('data-category');
-        card.style.display = filterVal === 'all' || category === filterVal ? 'block' : 'none';
-      });
+      applyFilter(btn.getAttribute('data-filter'));
     });
   });
 }
