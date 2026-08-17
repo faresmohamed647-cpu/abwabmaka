@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abwabmaka.zeusmediaeg.com/sitemap.xml
