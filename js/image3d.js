@@ -727,7 +727,7 @@ function init3DImageModal() {
 
             <!-- Image Fallback / 3D Tilt View -->
             <div id="modalImageViewWrapper" class="modal-image-wrapper">
-              <img id="modalFallbackImg" src="" alt="مشروع الإتقان للصناعات المعدنية" />
+              <img id="modalFallbackImg" src="" alt="مشروع أبواب مكة" />
             </div>
 
             <!-- 3D Mini Floating Controls Inside Stage -->

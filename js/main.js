@@ -32,7 +32,7 @@ function setupMobileNavigation() {
       const head = document.createElement('div');
       head.className = 'mobile-nav-drawer-head';
       head.innerHTML = `
-        <div class="mobile-nav-brand">الإتقان للصناعات المعدنية</div>
+        <div class="mobile-nav-brand">أبواب مكة</div>
         <div class="mobile-nav-label">أقسام الموقع الرئيسي</div>
       `;
       navMenu.insertBefore(head, navMenu.firstChild);
@@ -281,7 +281,43 @@ function initQuoteFormPrefill() {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    showToastNotification('تم استلام طلبكم بنجاح! سيتواصل معكم مهندس مختص خلال 24 ساعة.');
+
+    const fullName = document.getElementById('fullName')?.value.trim() || '';
+    const companyName = document.getElementById('companyName')?.value.trim() || '';
+    const phone = document.getElementById('phone')?.value.trim() || '';
+    const email = document.getElementById('email')?.value.trim() || '';
+    const projectType = getSelectedOptionLabel('projectType');
+    const region = getSelectedOptionLabel('region');
+    const projectDesc = document.getElementById('projectDesc')?.value.trim() || '';
+    const fileInput = document.getElementById('fileInput');
+    const fileNames = fileInput?.files?.length
+      ? Array.from(fileInput.files).map((file) => file.name).join('، ')
+      : '';
+
+    const lines = [
+      '*طلب عرض سعر — أبواب مكة*',
+      '',
+      `*الاسم:* ${fullName}`,
+    ];
+
+    if (companyName) lines.push(`*الشركة:* ${companyName}`);
+    lines.push(`*الجوال:* ${phone}`);
+    if (email) lines.push(`*البريد:* ${email}`);
+    lines.push(`*نوع المشروع:* ${projectType}`);
+    lines.push(`*المنطقة:* ${region}`);
+    if (projectDesc) {
+      lines.push('', '*وصف المشروع:*', projectDesc);
+    }
+    if (fileNames) {
+      lines.push('', `*ملفات مطلوب إرفاقها:* ${fileNames}`, 'يرجى إرفاق الملفات من داخل هذه المحادثة.');
+    }
+
+    openWhatsAppMessage(lines.join('\n'));
+    showToastNotification(
+      fileNames
+        ? 'سيتم فتح واتساب الآن. يرجى إرفاق الملفات من داخل المحادثة.'
+        : 'سيتم فتح واتساب لإرسال طلب عرض السعر.',
+    );
     form.reset();
   });
 }
@@ -292,9 +328,44 @@ function initGeneralContactForm() {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    showToastNotification('شكراً لتواصلكم! تم استلام رسالتكم وسيقوم فريق خدمة العملاء بالرد خلال ساعتين.');
+
+    const name = document.getElementById('contactName')?.value.trim() || '';
+    const phone = document.getElementById('contactPhone')?.value.trim() || '';
+    const email = document.getElementById('contactEmail')?.value.trim() || '';
+    const subject = getSelectedOptionLabel('contactSubject');
+    const message = document.getElementById('contactMessage')?.value.trim() || '';
+
+    const text = [
+      '*رسالة من موقع أبواب مكة*',
+      '',
+      `*الاسم:* ${name}`,
+      `*الجوال:* ${phone}`,
+      `*البريد:* ${email}`,
+      `*نوع الاستفسار:* ${subject}`,
+      '',
+      '*الرسالة:*',
+      message,
+    ].join('\n');
+
+    openWhatsAppMessage(text);
+    showToastNotification('سيتم فتح واتساب لإرسال رسالتكم.');
     form.reset();
   });
+}
+
+const WHATSAPP_NUMBER = '966553925444';
+
+function getSelectedOptionLabel(selectId) {
+  const select = document.getElementById(selectId);
+  if (!select) return '';
+  const option = select.options[select.selectedIndex];
+  return option ? option.text.trim() : select.value;
+}
+
+function openWhatsAppMessage(text) {
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  const popup = window.open(url, '_blank', 'noopener,noreferrer');
+  if (!popup) window.location.href = url;
 }
 
 function setupProjectAnimations() {
