@@ -904,8 +904,10 @@ function bindModalElements(modal) {
 
 function bindClickableCards() {
   const projectCards = document.querySelectorAll('.project-item-card');
+  if (![...projectCards].some((card) => card.querySelector('.open-modal-trigger, .btn-project-3d'))) return;
 
-  projectCards.forEach(card => {
+  projectCards.forEach((card) => {
+    if (!card.querySelector('.open-modal-trigger, .btn-project-3d')) return;
     card.style.cursor = 'pointer';
     card.addEventListener('click', (e) => {
       // If clicking inside a standard link (like quote link or whatsapp), let default link navigation work
