@@ -1,5 +1,5 @@
 (function initSiteSeo() {
-  const SITE_ORIGIN = 'https://abwabmaka.zeusmediaeg.com';
+  const SITE_ORIGIN = 'https://elmosasa.zeusmediaeg.com';
 
   const toAbsoluteUrl = (value) => {
     if (!value) return value;
@@ -38,8 +38,8 @@
       {
         '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
         '@id': siteUrl + '#business',
-        name: 'أبواب مكة',
-        alternateName: 'Abwab Makkah',
+        name: 'أبواب الموسى',
+        alternateName: 'Abwab Al-Mousa',
         description:
           'تصنيع وتركيب بوابات حديدية وأبواب أوتوماتيكية وشتر في المملكة العربية السعودية',
         url: siteUrl,
@@ -82,7 +82,7 @@
       {
         '@type': 'WebSite',
         '@id': siteUrl + '#website',
-        name: 'أبواب مكة',
+        name: 'أبواب الموسى',
         inLanguage: 'ar',
         url: siteUrl,
         publisher: { '@id': siteUrl + '#business' },

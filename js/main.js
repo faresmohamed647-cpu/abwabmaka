@@ -33,8 +33,8 @@ function setupMobileNavigation() {
       head.className = 'mobile-nav-drawer-head';
       head.innerHTML = `
         <div class="mobile-nav-brand">
-          <img src="images/logo.svg" alt="أبواب مكة" class="mobile-nav-brand-img" width="36" height="36">
-          <span>أبواب مكة</span>
+          <img src="images/logo.svg" alt="أبواب الموسى" class="mobile-nav-brand-img" width="36" height="36">
+          <span>أبواب الموسى</span>
         </div>
         <div class="mobile-nav-label">أقسام الموقع الرئيسي</div>
       `;
@@ -308,7 +308,7 @@ function initQuoteFormPrefill() {
       : '';
 
     const lines = [
-      '*طلب عرض سعر — أبواب مكة*',
+      '*طلب عرض سعر — أبواب الموسى*',
       '',
       `*الاسم:* ${fullName}`,
       `*الجوال:* ${phone}`,
@@ -345,7 +345,7 @@ function initGeneralContactForm() {
     const message = document.getElementById('contactMessage')?.value.trim() || '';
 
     const text = [
-      '*رسالة من موقع أبواب مكة*',
+      '*رسالة من موقع أبواب الموسى*',
       '',
       `*الاسم:* ${name}`,
       `*الجوال:* ${phone}`,
