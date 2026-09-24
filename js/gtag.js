@@ -10,6 +10,7 @@ function gtag() {
   document.head.appendChild(script);
 
   gtag('js', new Date());
+  gtag('config', 'G-6DB8C33EDK');
   gtag('config', 'AW-18396653825');
   gtag('config', 'GT-NS433Z574');
 })();
